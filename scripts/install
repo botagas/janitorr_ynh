@@ -40,7 +40,7 @@ ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
-usermod -a -G multimedia $app
+usermod -aG multimedia $app
 
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
