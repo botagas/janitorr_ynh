@@ -13,6 +13,7 @@ source _common.sh
 
 ynh_print_info "Installing dependencies..."
 ynh_print_info "Setting up source files and configuring the app..."
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
@@ -109,7 +110,6 @@ clients:
 EOL
 
 ynh_print_info "Building the app from source..."
-ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 # Build the app
 cd "$install_dir"
 ./gradlew build
