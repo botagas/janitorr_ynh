@@ -150,4 +150,4 @@ ram.runtime = "100M"
     main.default = 8978
 
     [resources.apt]
-    packages = "openjdk-17-jre"
+    packages = "openjdk-23-jdk"
