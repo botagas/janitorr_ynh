@@ -109,6 +109,7 @@ clients:
 EOL
 
 ynh_print_info "Building the app from source..."
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 # Build the app
 cd "$install_dir"
 ./gradlew build
