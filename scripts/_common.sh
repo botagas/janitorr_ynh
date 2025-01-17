@@ -60,7 +60,7 @@ ynh_install_java() {
       package_name=${package_name}-${java_engine}
     fi
 
-    ynh_install_app_dependencies ${package_name}
+    ynh_apt_install_dependencies ${package_name}
 
     # Store java_version into the config of this app
     ynh_app_setting_set --app=$app --key=java_version --value=$java_version
