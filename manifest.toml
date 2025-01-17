@@ -150,4 +150,4 @@ ram.runtime = "100M"
     main.default = 8978
 
     [resources.apt]
-    packages = "openjdk-22-jdk, openjdk-22-jre, openjdk-22-jdk-headless, openjdk-22-jre-headless"
+    packages = ["openjdk-17-jdk\\|openjdk-22-jdk",]
