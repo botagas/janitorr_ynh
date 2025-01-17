@@ -14,7 +14,6 @@ source _common.sh
 ynh_print_info "Installing dependencies..."
 ynh_apt_install_dependencies_from_extra_repository --repo="https://deb.debian.org/debian sid main" --package="openjdk-23-jdk" 
 ynh_print_info "Setting up source files and configuring the app..."
-ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
@@ -109,6 +108,9 @@ clients:
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
 EOL
+
+# Setup dir
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 
 ynh_print_info "Building the app from source..."
 # Build the app
