@@ -11,6 +11,10 @@ source _common.sh
 # INSTALLATION SCRIPT
 #=================================================
 
+# Setup dir
+ynh_print_info "Setting up directory..."
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
+
 ynh_print_info "Installing dependencies..."
 # apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y openjdk-22-jdk
 ynh_apt_install_dependencies openjdk-22-jdk
@@ -109,9 +113,6 @@ clients:
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
 EOL
-
-# Setup dir
-ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 
 ynh_print_info "Building the app from source..."
 # Build the app
