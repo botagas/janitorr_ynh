@@ -119,7 +119,7 @@ echo "Contents of /var/www/janitorr:" && ls -l /var/www/janitorr
 ynh_print_info "Building the app from source..."
 # Build the app
 cd "$install_dir"
-./gradlew build
+./gradlew build --stacktrace --info
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
