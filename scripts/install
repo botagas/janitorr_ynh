@@ -16,7 +16,7 @@ ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 
 ynh_print_info "Installing dependencies..."
-# apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y openjdk-22-jdk
+apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y openjdk-22-jdk
 ynh_apt_install_dependencies openjdk-22-jdk
 ynh_print_info "Setting up source files and configuring the app..."
 
