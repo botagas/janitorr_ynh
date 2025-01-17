@@ -43,15 +43,17 @@ ram.runtime = "100M"
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
     type = "string"
+    default = "key"
 
     [install.jellyfin_username]
     ask.en = "Enter the username for Jellyfin."
     type = "string"
+    default = "username"
 
     [install.jellyfin_password]
     ask.en = "Enter the password for Jellyfin."
     type = "string"
-    optional = true
+    default = "password"
 
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
@@ -61,6 +63,7 @@ ram.runtime = "100M"
     [install.radarr_api_key]
     ask.en = "Enter the API key for your Radarr server."
     type = "string"
+    default = "key"
 
     [install.sonarr_url]
     ask.en = "Enter the URL of your Sonarr server."
@@ -70,6 +73,7 @@ ram.runtime = "100M"
     [install.sonarr_api_key]
     ask.en = "Enter the API key for your Sonarr server."
     type = "string"
+    default = "key"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
@@ -79,6 +83,7 @@ ram.runtime = "100M"
     [install.jellyseerr_api_key]
     ask.en = "Enter the API key for your Jellyseerr server."
     type = "string"
+    default = "key"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
@@ -88,6 +93,7 @@ ram.runtime = "100M"
     [install.jellystat_api_key]
     ask.en = "Enter the API key for your Jellystat server."
     type = "string"
+    default = "key"
 
     [install.leaving_soon_dir]
     ask.en = "Enter the path for the 'leaving soon' directory."
