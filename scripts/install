@@ -12,7 +12,7 @@ source _common.sh
 #=================================================
 
 ynh_print_info "Installing dependencies..."
-ynh_apt_install_dependencies_from_extra_repository --repo="https://deb.debian.org/debian sid main" --package="openjdk-23-jdk" 
+ynh_apt_install_dependencies_from_extra_repository --repo="https://deb.debian.org/debian sid main" --package="openjdk-23-jdk" --key="https://ftp-master.debian.org/keys/archive-key-12.asc"
 ynh_print_info "Setting up source files and configuring the app..."
 
 # Save user inputs from manifest into app settings
