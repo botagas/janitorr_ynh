@@ -150,3 +150,6 @@ ram.runtime = "100M"
     main.default = 8978
 
     [resources.apt]
+    extras.yarn.repo = "deb https://deb.debian.org/debian sid main"
+    extras.yarn.key = "https://ftp-master.debian.org/keys/archive-key-12.asc"
+    extras.yarn.packages = ["openjdk-23-jdk"]
