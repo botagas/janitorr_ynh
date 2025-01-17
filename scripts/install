@@ -52,6 +52,14 @@ usermod -aG multimedia $app
 ynh_print_info "Creating necessary directories..."
 mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
 
+# Create gradle.properties
+cat > "$install_dir/gradle.properties" <<EOL
+group=com.github.schaka.janitorr
+artifactId=janitorr
+version=1.0.0
+description=Cleans up your media library.
+EOL
+
 # Create application.yml using a template
 ynh_print_info "Generating application.yml..."
 cat > "$install_dir/src/main/resources/application.yml" <<EOL
