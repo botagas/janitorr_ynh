@@ -12,6 +12,7 @@ source _common.sh
 #=================================================
 
 ynh_print_info "Installing dependencies..."
+ynh_install_java --java_version=22 --jdk_type=jdk --java_engine=headless
 ynh_print_info "Setting up source files and configuring the app..."
 
 # Save user inputs from manifest into app settings
