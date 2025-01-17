@@ -150,4 +150,3 @@ ram.runtime = "100M"
     main.default = 8978
 
     [resources.apt]
-    packages = ""
