@@ -12,6 +12,7 @@ source _common.sh
 #=================================================
 
 ynh_print_info "Installing dependencies..."
+apt-get install -y openjdk-22-jdk
 ynh_apt_install_dependencies openjdk-22-jdk
 ynh_print_info "Setting up source files and configuring the app..."
 
