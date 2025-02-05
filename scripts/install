@@ -123,7 +123,8 @@ ynh_print_info "Building the app from source..."
 cd "$install_dir"
 ./gradlew processAot
 ./gradlew processTestAot
-./gradlew build --stacktrace --info
+# ./gradlew build --stacktrace --info
+./gradlew bootJar
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
