@@ -17,11 +17,7 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 export JAVA_HOME=$install_dir/jdk
 
-# ynh_print_info "Installing dependencies..."
-# apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y openjdk-23-jdk
-# ynh_apt_install_dependencies openjdk-23-jdk
-ynh_print_info "Setting up source files and configuring the app..."
-
+ynh_print_info "Setting up variables..."
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
 ynh_app_setting_set --app=$app --key=jellyfin_api_key --value="$jellyfin_api_key"
@@ -45,7 +41,6 @@ ynh_app_setting_set --app=$app --key=leaving_soon --value="$leaving_soon"
 ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
 
 # Create necessary directories
-
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
 usermod -aG multimedia $app
