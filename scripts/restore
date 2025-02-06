@@ -36,7 +36,6 @@ systemctl enable "$app.service" --quiet
 # RESTORE VARIOUS FILES
 #=================================================
 
-ynh_restore "/etc/cron.d/$app"
 ynh_restore "/etc/$app/"
 
 #=================================================
