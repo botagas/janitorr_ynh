@@ -116,10 +116,13 @@ echo "Contents of /var/www/janitorr:" && ls -l /var/www/janitorr
 ynh_print_info "Building the app from source..."
 # Build the app
 cd "$install_dir"
+ynh_safe_rm ~/.gradle/caches/
+
+echo "Version of project: " && ./gradlew properties | grep version
 # ./gradlew processAot
 # ./gradlew processTestAot
 # ./gradlew build --stacktrace --info
-./gradlew -Pversion=1.0.0 bootJar
+./gradlew clean bootJar -Pversion=1.0.0
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
