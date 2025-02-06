@@ -119,7 +119,7 @@ cd "$install_dir"
 # ./gradlew processAot
 # ./gradlew processTestAot
 # ./gradlew build --stacktrace --info
-./gradlew bootJar -Pversion=1.6.10
+./gradlew bootJar -Pversion=1.0.0
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
