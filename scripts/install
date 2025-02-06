@@ -15,7 +15,7 @@ source _common.sh
 ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
-export JAVA_HOME=$install_dir/jdk
+export JAVA_HOME="$install_dir/jdk"
 export GRADLE_USER_HOME="$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
@@ -125,7 +125,7 @@ echo "Version of project: " && ./gradlew properties | grep version
 # ./gradlew processAot
 # ./gradlew processTestAot
 # ./gradlew build --stacktrace --info
-sudo ./gradlew --gradle-user-home "$GRADLE_USER_HOME" clean bootJar
+./gradlew --gradle-user-home "$GRADLE_USER_HOME" clean bootJar
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
