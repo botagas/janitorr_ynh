@@ -123,8 +123,7 @@ echo "Version of project: " && ./gradlew properties | grep version
 # ./gradlew processAot
 # ./gradlew processTestAot
 # ./gradlew build --stacktrace --info
-# ./gradlew --gradle-user-home "$GRADLE_USER_HOME" clean bootJar
-./gradlew nativeCompile --gradle-user-home "$GRADLE_USER_HOME" -P version=1.0.0
+./gradlew bootJar --gradle-user-home "$GRADLE_USER_HOME" -P version=1.0.0
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
 
