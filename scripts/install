@@ -111,15 +111,14 @@ clients:
     api-key: "$jellystat_api_key"
 EOL
 
-echo "Contents of /var/www/janitorr:" && ls -la /var/www/janitorr
-echo "Contents of gradle.properties:" && cat /var/www/janitorr/gradle.properties
-
 ynh_print_info "Building the app from source..."
 # Build the app
 cd "$install_dir"
 chown -R "$app:$app" "$install_dir"
 ynh_safe_rm ".gradle"
 
+echo "Contents of /var/www/janitorr:" && ls -la /var/www/janitorr
+echo "Contents of gradle.properties:" && cat /var/www/janitorr/gradle.properties
 echo "Version of project: " && ./gradlew properties | grep version
 # ./gradlew processAot
 # ./gradlew processTestAot
