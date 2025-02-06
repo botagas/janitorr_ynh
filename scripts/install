@@ -16,6 +16,7 @@ ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 export JAVA_HOME=$install_dir/jdk
+export GRADLE_USER_HOME="$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
 # Save user inputs from manifest into app settings
@@ -116,6 +117,7 @@ echo "Contents of /var/www/janitorr:" && ls -l /var/www/janitorr
 ynh_print_info "Building the app from source..."
 # Build the app
 cd "$install_dir"
+chown -R "$app:$app" "$install_dir"
 ynh_safe_rm ~/.gradle/caches/
 
 echo "Version of project: " && ./gradlew properties | grep version
