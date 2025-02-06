@@ -111,7 +111,7 @@ clients:
     api-key: "$jellystat_api_key"
 EOL
 
-echo "Contents of /var/www/janitorr:" && ls -l /var/www/janitorr
+echo "Contents of /var/www/janitorr:" && ls -la /var/www/janitorr
 echo "Contents of gradle.properties:" && cat /var/www/janitorr/gradle.properties
 
 ynh_print_info "Building the app from source..."
