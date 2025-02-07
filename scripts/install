@@ -112,6 +112,8 @@ EOL
 
 ynh_print_info "Building the app from source..."
 # Build the app
+chown -R "$app:$app" "$install_dir"
+chown -R "$app:$app" "$install_dir/.gradle"
 
 pushd "$install_dir"
   echo "Contents of /var/www/janitorr:" && ls -la
@@ -122,11 +124,7 @@ pushd "$install_dir"
   ynh_hide_warnings ynh_exec_as_app JAVA_HOME=$install_dir/jdk ./gradlew --stop
 popd
 
-echo "Contents of built libs:" && ls -la $install_dir/build_api/build/libs
-echo "Contents of built build:" && ls -la $install_dir/build
-echo "Contents of built install_dir:" && ls -la $install_dir
-
-chown -R "$app:$app" "$install_dir"
+echo "Contents of built libs:" && ls -la $install_dir/build/libs
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
