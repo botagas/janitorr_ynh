@@ -114,6 +114,7 @@ ynh_replace \
     --match="import org.springframework.boot.gradle.tasks.run.BootRun" \
     --replace="import org.springframework.boot.gradle.tasks.run.BootRun\nversion = \"1.6.10\"" \
     --file="$install_dir/build.gradle.kts"
+echo "Contents of build.gradle.kts:" && cat $install_dir/build.gradle.kts
 
 ynh_print_info "Building the app from source..."
 # Build the app
