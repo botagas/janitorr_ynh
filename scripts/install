@@ -118,8 +118,8 @@ pushd "$install_dir"
   echo "Contents of gradle.properties:" && cat gradle.properties
   echo "Version of project: " && ./gradlew properties | grep version
 #  ynh_exec_warn_less ynh_exec_as ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --stacktrace --info
-  ynh_exec_warn_less ynh_exec_as $app ./gradlew shadowJar -Dorg.gradle.java.home=$install_dir/jdk
-  ynh_exec_warn_less ynh_exec_as $app ./gradlew --stop
+  ynh_hide_warnings ynh_exec_as_app ./gradlew shadowJar -Dorg.gradle.java.home=$install_dir/jdk
+  ynh_hide_warnings ynh_exec_as_app ./gradlew --stop
 popd
 
 echo "Contents of built libs:" && ls -la $install_dir/build_api/build/libs
