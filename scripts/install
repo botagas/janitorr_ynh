@@ -110,12 +110,6 @@ clients:
     api-key: "$jellystat_api_key"
 EOL
 
-ynh_replace \
-    --match="import org.springframework.boot.gradle.tasks.run.BootRun" \
-    --replace="import org.springframework.boot.gradle.tasks.run.BootRun\nversion = \'1\'" \
-    --file="$install_dir/build.gradle.kts"
-echo "Contents of build.gradle.kts:" && cat $install_dir/build.gradle.kts
-
 ynh_print_info "Building the app from source..."
 # Build the app
 
@@ -123,12 +117,13 @@ pushd "$install_dir"
   echo "Contents of /var/www/janitorr:" && ls -la
   echo "Contents of gradle.properties:" && cat gradle.properties
   echo "Version of project: " && ./gradlew properties | grep version
-  ./gradlew processAot
-  ./gradlew processTestAot
-  ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --stacktrace --info
-  chown -R "$app:$app" "$install_dir"
-  ynh_safe_rm ".gradle"
+#  ynh_exec_warn_less ynh_exec_as ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --stacktrace --info
+  ynh_exec_warn_less ynh_exec_as $app ./gradlew shadowJar -Dorg.gradle.java.home=$install_dir/jdk
+  ynh_exec_warn_less ynh_exec_as $app ./gradlew --stop
 popd
+
+chown -R "$app:$app" "$install_dir"
+
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
