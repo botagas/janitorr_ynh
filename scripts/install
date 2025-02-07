@@ -10,7 +10,7 @@ source _common.sh
 # INSTALLATION SCRIPT
 #=================================================
 
-# Setup dir
+# Setup dir and env
 ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
@@ -40,7 +40,6 @@ ynh_app_setting_set --app=$app --key=whole_show_seeding_check --value="$whole_sh
 ynh_app_setting_set --app=$app --key=leaving_soon --value="$leaving_soon"
 ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
 
-# Create necessary directories
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
 usermod -aG multimedia $app
