@@ -115,6 +115,7 @@ chown -R "$app:$app" "$install_dir"
 
 pushd "$install_dir"
   echo "Contents of /var/www/janitorr:" && ls -la
+  ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew tasks
   ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew --no-daemon bootJar
   ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew --stop
 popd
