@@ -15,7 +15,7 @@ ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 export JAVA_HOME="$install_dir/jdk"
-export GRADLE_USER_HOME="$install_dir/.gradle"
+# export GRADLE_USER_HOME="$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
 # Save user inputs from manifest into app settings
@@ -120,7 +120,7 @@ pushd "$install_dir"
   echo "Contents of gradle.properties:" && cat gradle.properties
   echo "Version of project: " && ./gradlew properties | grep version
 #  ynh_exec_warn_less ynh_exec_as ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --stacktrace --info
-  ynh_hide_warnings ynh_exec_as_app JAVA_HOME=$install_dir/jdk ./gradlew shadowJar -Dorg.gradle.java.home=$install_dir/jdk
+  ynh_hide_warnings ynh_exec_as_app JAVA_HOME=$install_dir/jdk ./gradlew shadowJar
   ynh_hide_warnings ynh_exec_as_app JAVA_HOME=$install_dir/jdk ./gradlew --stop
 popd
 
