@@ -112,7 +112,6 @@ EOL
 ynh_print_info "Building the app from source..."
 # Build the app
 chown -R "$app:$app" "$install_dir"
-# chown -R "$app:$app" "$install_dir/.gradle"
 
 pushd "$install_dir"
   echo "Contents of /var/www/janitorr:" && ls -la
