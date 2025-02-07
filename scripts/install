@@ -117,7 +117,7 @@ pushd "$install_dir"
   echo "Contents of /var/www/janitorr:" && ls -la
   echo "Contents of gradle.properties:" && cat gradle.properties
   echo "Version of project: " && ./gradlew properties | grep version
-  ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --stacktrace --info --debug
+  ./gradlew bootJar -Dorg.gradle.java.home=$install_dir/jdk --gradle-user-home "$GRADLE_USER_HOME" --debug
   chown -R "$app:$app" "$install_dir"
   ynh_safe_rm ".gradle"
 popd
