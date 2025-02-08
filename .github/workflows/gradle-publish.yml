@@ -41,7 +41,7 @@ jobs:
     - name: Build with Gradle
       run: |
         cd janitorr
-        ./gradlew build
+        ./gradlew bootJar
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
