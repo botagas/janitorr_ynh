@@ -32,6 +32,7 @@ jobs:
         
     - name: Clone Janitorr Repository
       run: |
+          ls -la
           git clone --depth 1 https://github.com/Schaka/janitorr.git
           cd janitorr
           
