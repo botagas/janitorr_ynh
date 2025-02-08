@@ -114,8 +114,8 @@ wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/rel
 chown -R "$app:$app" "$install_dir"
 
 ynh_print_info "Adding systemd service..."
-ynh_config_add_systemd
 yunohost service add "$app" --description="Janitorr cleanup service"
+ynh_config_add_systemd
 
 ynh_print_info "Adding nginx configuration..."
 ynh_config_add_nginx
