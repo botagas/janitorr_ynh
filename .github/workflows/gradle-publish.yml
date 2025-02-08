@@ -32,7 +32,6 @@ jobs:
         
     - name: Clone Janitorr Repository
       run: |
-          ls -la
           git clone --depth 1 https://github.com/Schaka/janitorr.git
           cd janitorr
           sed -i 's|optional:file:/workspace/application.yml|optional:file:/var/www/janitorr/src/main/resources/application.yml|g' build.gradle.kts
