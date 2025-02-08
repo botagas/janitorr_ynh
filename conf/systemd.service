@@ -1,5 +1,5 @@
 [Unit]
-Description=Small description of the service
+Description=Janitorr Service
 After=network.target
 
 [Service]
@@ -7,14 +7,12 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
-StandardOutput=append:/var/log/__APP__/__APP__.log
-StandardError=inherit
+ExecStart=__INSTALL_DIR__/jdk/bin/java -jar __INSTALL_DIR__/janitorr.jar
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=__APP__
 
-### Depending on specificities of your service/app, you may need to tweak these
-### .. but this should be a good baseline
-# Sandboxing options to harden security
-# Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+### Security and sandboxing options to harden the service
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
@@ -33,8 +31,7 @@ LockPersonality=yes
 SystemCallArchitectures=native
 SystemCallFilter=~@clock @debug @module @mount @obsolete @reboot @setuid @swap @cpu-emulation @privileged
 
-# Denying access to capabilities that should not be relevant for webapps
-# Doc: https://man7.org/linux/man-pages/man7/capabilities.7.html
+### Capability restrictions for enhanced security
 CapabilityBoundingSet=~CAP_RAWIO CAP_MKNOD
 CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
 CapabilityBoundingSet=~CAP_SYS_BOOT CAP_SYS_TIME CAP_SYS_MODULE CAP_SYS_PACCT
