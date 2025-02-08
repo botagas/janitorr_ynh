@@ -35,7 +35,7 @@ jobs:
           git clone --depth 1 https://github.com/Schaka/janitorr.git
           cd janitorr
           sed -i 's|optional:file:/workspace/application.yml|optional:file:/var/www/janitorr/src/main/resources/application.yml|g' build.gradle.kts
-          
+          sed -i 's|optional:file:/workspace/application.yaml|optional:file:/var/www/janitorr/src/main/resources/application.yml|g' build.gradle.kts         
     #- name: Setup Gradle
     #  uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
