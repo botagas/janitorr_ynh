@@ -109,17 +109,9 @@ clients:
     api-key: "$jellystat_api_key"
 EOL
 
-ynh_print_info "Building the app from source..."
-# Build the app
+ynh_print_info "Downloading Janitorr JAR..."
+wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
-
-pushd "$install_dir"
-  echo "Contents of /var/www/janitorr:" && ls -la
-  ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew --no-daemon bootJar
-  ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew --stop
-popd
-
-echo "Contents of built libs:" && ls -la $install_dir/build/libs
 
 ynh_print_info "Adding systemd service..."
 ynh_config_add_systemd
