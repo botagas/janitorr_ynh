@@ -45,8 +45,16 @@ jobs:
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: Publish to GitHub Packages
-      run: ./gradlew publish
+#    - name: Publish to GitHub Packages
+#      run: ./gradlew publish
+#      env:
+#        USERNAME: ${{ github.actor }}
+#        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload JAR to GitHub Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: janitorr/build/libs/janitorr-*.jar
+        tag_name: latest
       env:
         USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
