@@ -33,10 +33,10 @@ ynh_restore "/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
 
 #=================================================
-# RESTORE VARIOUS FILES
+# ADD SERVICE
 #=================================================
 
-ynh_restore "/etc/$app/"
+yunohost service add "$app" --description="Janitorr cleanup service"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
