@@ -22,7 +22,7 @@ ynh_script_progression "Upgrading source files..."
 
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="$install_dir/src/main/resources/application.yml"
 
-chown -R "$app:www-data" "$install_dir"
+chown -R "$app:$app" "$install_dir"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -32,7 +32,7 @@ ynh_print_info "Downloading Janitorr JAR..."
 wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
 
-ynh_script_progression "Upgrading system configurations related to $app..."
+ynh_script_progression "Configuring nginx and systemd related to $app..."
 
 ynh_config_add_nginx
 
