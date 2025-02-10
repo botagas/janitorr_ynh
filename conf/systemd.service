@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/jdk/bin/java -jar __INSTALL_DIR__/janitorr.jar
+ExecStart=__INSTALL_DIR__/jdk/bin/java -Dspring.config.location=file:/var/www/janitorr/src/main/resources/application.yml -jar __INSTALL_DIR__/janitorr.jar
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=__APP__
