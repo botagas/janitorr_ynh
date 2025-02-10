@@ -88,6 +88,11 @@ chown "$app:$app" "$install_dir/some_config_file"
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
+
+ynh_print_info "Downloading Janitorr JAR..."
+wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
+chown -R "$app:$app" "$install_dir"
+
 ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
