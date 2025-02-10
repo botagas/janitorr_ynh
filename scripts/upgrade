@@ -53,7 +53,7 @@ ynh_script_progression "Upgrading source files..."
 ### You can list with --keep every file/directory to *not* wipe or overwrite,
 ### useful for configuration files, data directories, or plugins.
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".env data"
+ynh_setup_source --dest_dir="$install_dir" --full_replace
 
 ### $install_dir will automatically be initialized with some decent
 ### permissions by default... however, you may need to recursively reapply
@@ -70,7 +70,7 @@ ynh_script_progression "Updating $app's configuration files..."
 ### The file will automatically be backed-up if it's found to be manually modified (because
 ### ynh_config_add keeps track of the file's checksum)
 
-ynh_config_add --template="some_config_file" --destination="$install_dir/some_config_file"
+ynh_config_add --template="config" --destination="$install_dir/src/main/resources/application.yml"
 
 # FIXME: this should be handled by the core in the future
 ### You may need to use chmod 600 instead of 400,
@@ -90,19 +90,11 @@ chown "$app:$app" "$install_dir/some_config_file"
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-### This should be a literal copypaste of what happened in the install's "System configuration" section
-
-ynh_config_add_phpfpm
-
 ynh_config_add_nginx
 
 ynh_config_add_systemd
 
 yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
-
-ynh_config_add_logrotate
-
-ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
 
 #=================================================
 # START SYSTEMD SERVICE
