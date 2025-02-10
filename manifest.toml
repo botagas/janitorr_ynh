@@ -112,18 +112,24 @@ ram.runtime = "100M"
 
     [install.dry_run]
     ask.en = "Enable dry run mode? (true/false)"
-    type = "boolean"
-    default = true
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "true"
 
     [install.whole_tv_show]
     ask.en = "Treat TV shows as a whole for deletion? (true/false)"
-    type = "boolean"
-    default = false
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
 
     [install.whole_show_seeding_check]
     ask.en = "Enable seeding checks for whole TV shows? (true/false)"
-    type = "boolean"
-    default = false
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
 
     [install.leaving_soon]
     ask.en = "Set the time duration for 'leaving soon' (e.g., 14d)."
