@@ -153,11 +153,6 @@ ynh_print_info "Downloading Janitorr JAR..."
 wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
 
-pushd "$install_dir"
-  ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew bootJar
-  ynh_hide_warnings ynh_exec_as_app $env_string ./gradlew --stop
-popd
-
 ynh_print_info "Adding systemd service..."
 yunohost service add "$app" --description="Janitorr cleanup service"
 ynh_config_add_systemd
