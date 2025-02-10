@@ -56,6 +56,8 @@ server:
 logging:
   level:
     com.github.schaka: INFO
+  threshold:
+    file: NONE # Set to TRACE to enable file logging
 
 file-system:
   access: true
@@ -94,6 +96,15 @@ clients:
     username: "$jellyfin_username"
     password: "$jellyfin_password"
     delete: true
+    leaving-soon-tv: "Shows (Leaving Soon)"
+    leaving-soon-movies: "Movies (Leaving Soon)"
+  emby:
+    enabled: false
+    url: "http://localhost:8096"
+    api-key: "4da8d93992804489ba2d1f0e31b8316c"
+    username: Janitorr
+    password: janitorr
+    delete: true # Emby setup is required for JellyStat. However, if you don't want Janitorr to send delete requests to the Emby API, disable it here
     leaving-soon-tv: "Shows (Leaving Soon)"
     leaving-soon-movies: "Movies (Leaving Soon)"
   radarr:
