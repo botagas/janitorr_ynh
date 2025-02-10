@@ -5,8 +5,8 @@ It shall NOT be edited by hand.
 
 # Janitorr for YunoHost
 
-[![Integration level](https://apps.yunohost.org/badge/integration/janitorr)](https://ci-apps.yunohost.org/ci/apps/janitorr/)
-![Working status](https://apps.yunohost.org/badge/state/janitorr)
+[![Integration level](https://img.shields.io/endpoint?url=https://yunorunner.tiesiog.lt/api/badge/janitorr/integration)](https://ci-apps.yunohost.org/ci/apps/janitorr/)
+![Working status](https://img.shields.io/endpoint?url=https://yunorunner.tiesiog.lt/api/badge/janitorr/status)
 ![Maintenance status](https://apps.yunohost.org/badge/maintained/janitorr)
 
 [![Install Janitorr with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=janitorr)
