@@ -38,6 +38,7 @@ ynh_app_setting_set --app=$app --key=whole_tv_show --value="$whole_tv_show"
 ynh_app_setting_set --app=$app --key=whole_show_seeding_check --value="$whole_show_seeding_check"
 ynh_app_setting_set --app=$app --key=leaving_soon --value="$leaving_soon"
 ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
+ynh_config_add --template="config" --destination="$install_dir/src/main/resources/application.yml"
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
