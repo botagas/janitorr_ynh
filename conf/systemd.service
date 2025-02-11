@@ -12,6 +12,11 @@ StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=__APP__
 
+# Prevents systemd from marking the app as failed if it exits with errors
+Restart=always
+RestartSec=30
+SuccessExitStatus=143
+
 ### Security and sandboxing options to harden the service
 NoNewPrivileges=yes
 PrivateTmp=yes
