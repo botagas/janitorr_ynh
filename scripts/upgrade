@@ -20,7 +20,9 @@ ynh_systemctl --service="$app" --action="stop"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="$install_dir/src/main/resources/application.yml"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --source_id="main" --keep="$install_dir/src/main/resources/application.yml"
+ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
+env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
 
 chown -R "$app:$app" "$install_dir"
 
