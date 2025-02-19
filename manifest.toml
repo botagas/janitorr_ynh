@@ -76,7 +76,7 @@ ram.runtime = "100M"
 
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Radarr is installed on YunoHost."
     type = "string"
     default = "emptystring"
 
@@ -90,7 +90,7 @@ ram.runtime = "100M"
 
     [install.sonarr_url]
     ask.en = "Enter the URL of your Sonarr server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Sonarr is installed on YunoHost."
     type = "string"
     default = "emptystring"
 
@@ -104,7 +104,7 @@ ram.runtime = "100M"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
+    help.en = "This setting is NOT FETCHED AUTOMATICALLY during install if Jellyseerr is installed on YunoHost."
     type = "string"
     default = "emptystring"
 
@@ -124,7 +124,7 @@ ram.runtime = "100M"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellystat is installed on YunoHost."
     type = "string"
     default = "emptystring"
 
