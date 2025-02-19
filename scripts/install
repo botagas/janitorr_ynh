@@ -17,6 +17,32 @@ ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
+# Find service API keys and ports
+if ls /etc/yunohost/apps | grep -q "radarr"; then
+        radarr_port=$(ynh_app_setting_get --app radarr --key port)
+        radarr_url="http://127.0.0.1:$radarr_port"
+        radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
+else
+        radarr_port=""
+        radarr_api_key=""
+fi
+if ls /etc/yunohost/apps | grep -q "sonarr"; then
+        sonarr_port=$(ynh_app_setting_get --app sonarr --key port)
+        sonarr_url="http://127.0.0.1:$sonarr_port"
+        sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
+else
+        sonarr_port=""
+        sonarr_api_key=""
+fi
+if ls /etc/yunohost/apps | grep -q "jellystat"; then
+        jellystat_port=$(ynh_app_setting_get --app jellystat --key port)
+        jellystat_url="http://127.0.0.1:$jellystat_port"
+        jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
+else
+        jellystat_port=""
+        jellystat_api_key=""
+fi
+
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
 ynh_app_setting_set --app=$app --key=jellyfin_api_key --value="$jellyfin_api_key"
