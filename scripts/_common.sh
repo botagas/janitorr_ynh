@@ -12,25 +12,25 @@ leaving_soon_dir="/home/yunohost.multimedia/share/leavingsoon"
 media_server_leaving_soon_dir="/home/yunohost.multimedia/share/leavingsoon"
 
 if ls /etc/yunohost/apps | grep -q "radarr"; then
-        radarr_port=$(ynh_app_setting_get --app radarr --key port)
+        radarr_port=$(ynh_hide_warnings ynh_app_setting_get --app radarr --key port)
         radarr_url="http://127.0.0.1:$radarr_port"
-        radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
+        radarr_api_key=$(ynh_hide_warnings ynh_app_setting_get --app radarr --key api_key)
 else
         radarr_port=""
         radarr_api_key=""
 fi
 if ls /etc/yunohost/apps | grep -q "sonarr"; then
-        sonarr_port=$(ynh_app_setting_get --app sonarr --key port)
+        sonarr_port=$(ynh_hide_warnings ynh_app_setting_get --app sonarr --key port)
         sonarr_url="http://127.0.0.1:$sonarr_port"
-        sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
+        sonarr_api_key=$(ynh_hide_warnings ynh_app_setting_get --app sonarr --key api_key)
 else
         sonarr_port=""
         sonarr_api_key=""
 fi
 if ls /etc/yunohost/apps | grep -q "jellystat"; then
-        jellystat_port=$(ynh_app_setting_get --app jellystat --key port)
+        jellystat_port=$(ynh_hide_warnings ynh_app_setting_get --app jellystat --key port)
         jellystat_url="http://127.0.0.1:$jellystat_port"
-        jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
+        jellystat_api_key=$(ynh_hide_warnings ynh_app_setting_get --app jellystat --key api_key)
 else
         jellystat_port=""
         jellystat_api_key=""
