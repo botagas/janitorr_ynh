@@ -72,7 +72,11 @@ ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_k
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
-usermod -aG multimedia $app
+
+# Build YunoHost multimedia directories
+ynh_multimedia_build_main_dir
+# Enable writing into these directories
+ynh_multimedia_addaccess $app
 
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
