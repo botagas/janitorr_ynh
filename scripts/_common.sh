@@ -35,14 +35,6 @@ else
         jellystat_port=""
         jellystat_api_key=""
 fi
-if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
-        jellyseerr_port=$(ynh_app_setting_get --app jellyseerr --key port)
-        jellyseerr_url="http://127.0.0.1:$jellyseerr_port"
-        jellyseerr_api_key=$(ynh_app_setting_get --app jellyseerr --key api_key)
-else
-        jellyseerr_port=""
-        jellyseerr_api_key=""
-fi
 
 #=================================================
 # COMMON FUNCTIONS
