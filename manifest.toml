@@ -44,9 +44,8 @@ ram.runtime = "100M"
 
     [install.jellyfin_url]
     ask.en = "Enter the URL of your Jellyfin server."
-    help.en = "Leave blank if you do not use this service."
+    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
     type = "string"
-    default = "http://localhost:8096"
 
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
@@ -74,9 +73,8 @@ ram.runtime = "100M"
 
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
-    help.en = "Leave blank if you do not use this service."
+    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
     type = "string"
-    default = "http://localhost:7878"
 
     [install.sonarr_usage]
     ask.en = "Do you use Sonarr?"
@@ -87,9 +85,8 @@ ram.runtime = "100M"
 
     [install.sonarr_url]
     ask.en = "Enter the URL of your Sonarr server."
-    help.en = "Leave blank if you do not use this service."
+    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
     type = "string"
-    default = "http://localhost:8989"
 
     [install.jellyseerr_usage]
     ask.en = "Do you use Jellyseerr?"
@@ -100,7 +97,7 @@ ram.runtime = "100M"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
-    help.en = "Leave blank if you do not use this service."
+    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
     type = "string"
     default = "http://localhost:5055"
 
@@ -119,7 +116,7 @@ ram.runtime = "100M"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
-    help.en = "Leave blank if you do not use this service."
+    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
     type = "string"
     default = "http://localhost:3000"
 
