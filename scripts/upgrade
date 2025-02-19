@@ -40,6 +40,11 @@ ynh_config_add_systemd
 
 yunohost service add "$app" --description="Janitorr cleanup service"
 
+# Build YunoHost multimedia directories
+ynh_multimedia_build_main_dir
+# Enable writing into these directories
+ynh_multimedia_addaccess $app
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
