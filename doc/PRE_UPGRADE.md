@@ -1,1 +1,1 @@
-This is a dummy disclaimer to display prior to any upgrade
+Upgrades can be unstable sometimes - it is best advised to do proper backups before any updates and upgrades.
