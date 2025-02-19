@@ -37,6 +37,7 @@ ram.runtime = "100M"
 
     [install.jellyfin_usage]
     ask.en = "Do you use Jellyfin?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
     choices.false = "false"
@@ -44,7 +45,7 @@ ram.runtime = "100M"
 
     [install.jellyfin_url]
     ask.en = "Enter the URL of your Jellyfin server."
-    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
     type = "string"
 
     [install.jellyfin_api_key]
@@ -57,15 +58,14 @@ ram.runtime = "100M"
     ask.en = "Enter the username for Jellyfin."
     help.en = "Janitorr requires a separate user for monitoring media."
     type = "string"
-    default = "username"
 
     [install.jellyfin_password]
     ask.en = "Enter the password for Jellyfin."
     type = "string"
-    default = "password"
 
     [install.radarr_usage]
     ask.en = "Do you use Radarr?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
     choices.false = "false"
@@ -73,11 +73,12 @@ ram.runtime = "100M"
 
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
-    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
     type = "string"
 
     [install.sonarr_usage]
     ask.en = "Do you use Sonarr?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
     choices.false = "false"
@@ -85,11 +86,12 @@ ram.runtime = "100M"
 
     [install.sonarr_url]
     ask.en = "Enter the URL of your Sonarr server."
-    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
     type = "string"
 
     [install.jellyseerr_usage]
     ask.en = "Do you use Jellyseerr?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
     choices.false = "false"
@@ -97,18 +99,17 @@ ram.runtime = "100M"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
-    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
     type = "string"
-    default = "http://localhost:5055"
 
     [install.jellyseerr_api_key]
     ask.en = "Enter the API key for your Jellyseerr server."
     help.en = "Leave blank if you do not use this service."
     type = "string"
-    default = "key"
 
     [install.jellystat_usage]
     ask.en = "Do you use Jellystat?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
     choices.false = "false"
@@ -116,9 +117,8 @@ ram.runtime = "100M"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
-    help.en = "This setting is fetched automatically during install if Jellyfin is present within YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost."
     type = "string"
-    default = "http://localhost:3000"
 
     [install.leaving_soon_dir]
     ask.en = "Enter the path for the 'leaving soon' directory."
