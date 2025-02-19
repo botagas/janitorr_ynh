@@ -29,7 +29,7 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 
 ynh_print_info "Downloading Janitorr JAR..."
-wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
+ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
 
 ynh_script_progression "Configuring nginx and systemd related to $app..."
