@@ -201,8 +201,8 @@ ram.runtime = "100M"
     [resources.install_dir]
     dir = "/var/www/janitorr"
 
-    [resources.permissions]
-    main.url = "/"
+#    [resources.permissions]
+#    main.url = "/"
 
     [resources.ports]
     main.default = 8978
