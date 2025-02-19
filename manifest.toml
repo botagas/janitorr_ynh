@@ -30,10 +30,9 @@ ram.runtime = "100M"
 #    [install.path]
 #    type = "path"
 #    default = "/"
-
-    [install.init_main_permission]
-    type = "group"
-    default = "visitors"
+#    [install.init_main_permission]
+#    type = "group"
+#    default = "visitors"
 
     [install.jellyfin_usage]
     ask.en = "Do you use Jellyfin?"
