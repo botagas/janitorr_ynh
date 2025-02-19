@@ -35,13 +35,22 @@ ram.runtime = "100M"
     type = "path"
     default = "/"
 
+    [install.jellyfin_usage]
+    ask.en = "Do you use Jellyfin?"
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
+
     [install.jellyfin_url]
     ask.en = "Enter the URL of your Jellyfin server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "http://localhost:8096"
 
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
+    help.en = "Janitorr requires you to create an API key."
     type = "string"
     default = "key"
 
@@ -56,45 +65,63 @@ ram.runtime = "100M"
     type = "string"
     default = "password"
 
+    [install.radarr_usage]
+    ask.en = "Do you use Radarr?"
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
+
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "http://localhost:7878"
 
-    [install.radarr_api_key]
-    ask.en = "Enter the API key for your Radarr server."
-    type = "string"
-    default = "key"
+    [install.sonarr_usage]
+    ask.en = "Do you use Sonarr?"
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
 
     [install.sonarr_url]
     ask.en = "Enter the URL of your Sonarr server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "http://localhost:8989"
 
-    [install.sonarr_api_key]
-    ask.en = "Enter the API key for your Sonarr server."
-    type = "string"
-    default = "key"
+    [install.jellyseerr_usage]
+    ask.en = "Do you use Jellyseerr?"
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "http://localhost:5055"
 
     [install.jellyseerr_api_key]
     ask.en = "Enter the API key for your Jellyseerr server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "key"
+
+    [install.jellystat_usage]
+    ask.en = "Do you use Jellystat?"
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
+    help.en = "Leave blank if you do not use this service."
     type = "string"
     default = "http://localhost:3000"
-
-    [install.jellystat_api_key]
-    ask.en = "Enter the API key for your Jellystat server."
-    type = "string"
-    default = "key"
 
     [install.leaving_soon_dir]
     ask.en = "Enter the path for the 'leaving soon' directory."
