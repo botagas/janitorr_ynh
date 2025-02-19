@@ -38,6 +38,11 @@ ynh_app_setting_set --app=$app --key=whole_tv_show --value="$whole_tv_show"
 ynh_app_setting_set --app=$app --key=whole_show_seeding_check --value="$whole_show_seeding_check"
 ynh_app_setting_set --app=$app --key=leaving_soon --value="$leaving_soon"
 ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
+ynh_app_setting_set --app=$app --key=jellyfin_usage --value="$jellyfin_usage"
+ynh_app_setting_set --app=$app --key=jellyseerr_usage --value="$jellyseerr_usage"
+ynh_app_setting_set --app=$app --key=jellystat_usage --value="$jellystat_usage"
+ynh_app_setting_set --app=$app --key=radarr_usage --value="$radarr_usage"
+ynh_app_setting_set --app=$app --key=sonarr_usage --value="$sonarr_usage"
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
@@ -105,7 +110,7 @@ application:
 
 clients:
   jellyfin:
-    enabled: true
+    enabled: $jellyfin_usage
     url: "$jellyfin_url"
     api-key: "$jellyfin_api_key"
     username: "$jellyfin_username"
@@ -123,12 +128,12 @@ clients:
     leaving-soon-tv: "Shows (Leaving Soon)"
     leaving-soon-movies: "Movies (Leaving Soon)"
   radarr:
-    enabled: true
+    enabled: $radarr_usage
     url: "$radarr_url"
     api-key: "$radarr_api_key"
     only-delete-files: false
   sonarr:
-    enabled: true
+    enabled: $sonarr_usage
     url: "$sonarr_url"
     api-key: "$sonarr_api_key"
     delete-empty-shows: true
@@ -139,12 +144,12 @@ clients:
     api-key: "cd0912f129d348c9b69bb20d49fcbe55"
 
   jellyseerr:
-    enabled: true
+    enabled: $jellyseerr_usage
     url: "$jellyseerr_url"
     api-key: "$jellyseerr_api_key"
     match-server: false
   jellystat:
-    enabled: true
+    enabled: $jellystat_usage
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
 EOL
