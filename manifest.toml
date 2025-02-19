@@ -56,13 +56,13 @@ ram.runtime = "100M"
     default = "emptystring"
 
     [install.jellyfin_username]
-    ask.en = "Enter the username for Jellyfin."
+    ask.en = "Enter the username for Jellyfin user."
     help.en = "Janitorr requires a separate user for monitoring media."
     type = "string"
     default = "emptystring"
 
     [install.jellyfin_password]
-    ask.en = "Enter the password for Jellyfin."
+    ask.en = "Enter the password for Jellyfin user."
     type = "string"
     default = "emptystring"
 
