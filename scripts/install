@@ -193,7 +193,7 @@ yunohost service add "$app" --description="Janitorr cleanup service"
 ynh_config_add_systemd
 
 ynh_print_info "Adding nginx configuration..."
-ynh_config_add_nginx
+# ynh_config_add_nginx
 
 ynh_print_info "Starting service..."
 ynh_systemctl --service="$app" --action="start"
