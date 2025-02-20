@@ -25,7 +25,10 @@ Janitorr makes sure to not only delete unused media - it also deletes leftover r
 If paired with Jellystat, it will determine media inactivity based on data recorded by Jellystat (user watch activity). It is highly recommended to use it in pair with Jellystat to ensure only truly not watched media is considered obsolete.
 
 
+
 **Shipped version:** 1.6.10~ynh1
+
+
 
 ## Screenshots
 
