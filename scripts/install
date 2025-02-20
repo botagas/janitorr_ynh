@@ -7,11 +7,10 @@ source /usr/share/yunohost/helpers
 source _common.sh
 
 #=================================================
-# INSTALLATION SCRIPT
+# DIR AND VARS
 #=================================================
+ynh_script_progression "Setting up directory and variables..."
 
-# Setup dir and env
-ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
@@ -69,6 +68,11 @@ ynh_app_setting_set --app=$app --key=jellyseerr_url --value="$jellyseerr_url"
 ynh_app_setting_set --app=$app --key=jellyseerr_api_key --value="$jellyseerr_api_key"
 ynh_app_setting_set --app=$app --key=jellystat_url --value="$jellystat_url"
 ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_key"
+
+#=================================================
+# ACCESS AND CONFIG
+#=================================================
+ynh_script_progression "Starting setup process for access and config..."
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
@@ -184,6 +188,11 @@ clients:
     api-key: "$jellystat_api_key"
 EOL
 
+#=================================================
+# EXECUTABLE AND SYSTEM CONF SETUP
+#=================================================
+ynh_script_progression "Setting up the app executable and system configs..."
+
 ynh_print_info "Downloading Janitorr JAR..."
 ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
@@ -198,4 +207,4 @@ ynh_config_add_systemd
 ynh_print_info "Starting service..."
 ynh_systemctl --service="$app" --action="start"
 
-ynh_print_info "Installation completed!"
+ynh_script_progression "Installation completed!"
