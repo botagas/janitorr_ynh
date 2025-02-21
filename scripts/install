@@ -7,29 +7,46 @@ source /usr/share/yunohost/helpers
 source _common.sh
 
 #=================================================
-# INSTALLATION SCRIPT
+# DIR AND VARS
 #=================================================
+ynh_script_progression "Setting up directory and variables..."
 
-# Setup dir and env
-ynh_print_info "Setting up directory..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
+# Find service API keys and ports
+if ls /etc/yunohost/apps | grep -q "radarr"; then
+        radarr_port=$(ynh_app_setting_get --app radarr --key port)
+        radarr_url="http://127.0.0.1:$radarr_port"
+        radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
+else
+        radarr_port=""
+        radarr_api_key=""
+fi
+if ls /etc/yunohost/apps | grep -q "sonarr"; then
+        sonarr_port=$(ynh_app_setting_get --app sonarr --key port)
+        sonarr_url="http://127.0.0.1:$sonarr_port"
+        sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
+else
+        sonarr_port=""
+        sonarr_api_key=""
+fi
+if ls /etc/yunohost/apps | grep -q "jellystat"; then
+        jellystat_port=$(ynh_app_setting_get --app jellystat --key port)
+        jellystat_url="http://127.0.0.1:$jellystat_port"
+        jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
+else
+        jellystat_port=""
+        jellystat_api_key=""
+fi
+
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
 ynh_app_setting_set --app=$app --key=jellyfin_api_key --value="$jellyfin_api_key"
 ynh_app_setting_set --app=$app --key=jellyfin_username --value="$jellyfin_username"
 ynh_app_setting_set --app=$app --key=jellyfin_password --value="$jellyfin_password"
-ynh_app_setting_set --app=$app --key=radarr_url --value="$radarr_url"
-ynh_app_setting_set --app=$app --key=radarr_api_key --value="$radarr_api_key"
-ynh_app_setting_set --app=$app --key=sonarr_url --value="$sonarr_url"
-ynh_app_setting_set --app=$app --key=sonarr_api_key --value="$sonarr_api_key"
-ynh_app_setting_set --app=$app --key=jellyseerr_url --value="$jellyseerr_url"
-ynh_app_setting_set --app=$app --key=jellyseerr_api_key --value="$jellyseerr_api_key"
-ynh_app_setting_set --app=$app --key=jellystat_url --value="$jellystat_url"
-ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_key"
 ynh_app_setting_set --app=$app --key=leaving_soon_dir --value="$leaving_soon_dir"
 ynh_app_setting_set --app=$app --key=media_server_leaving_soon_dir --value="$media_server_leaving_soon_dir"
 ynh_app_setting_set --app=$app --key=free_space_check_dir --value="$free_space_check_dir"
@@ -38,10 +55,32 @@ ynh_app_setting_set --app=$app --key=whole_tv_show --value="$whole_tv_show"
 ynh_app_setting_set --app=$app --key=whole_show_seeding_check --value="$whole_show_seeding_check"
 ynh_app_setting_set --app=$app --key=leaving_soon --value="$leaving_soon"
 ynh_app_setting_set --app=$app --key=exclusion_tag --value="$exclusion_tag"
+ynh_app_setting_set --app=$app --key=jellyfin_usage --value="$jellyfin_usage"
+ynh_app_setting_set --app=$app --key=jellyseerr_usage --value="$jellyseerr_usage"
+ynh_app_setting_set --app=$app --key=jellystat_usage --value="$jellystat_usage"
+ynh_app_setting_set --app=$app --key=radarr_usage --value="$radarr_usage"
+ynh_app_setting_set --app=$app --key=sonarr_usage --value="$sonarr_usage"
+ynh_app_setting_set --app=$app --key=radarr_url --value="$radarr_url"
+ynh_app_setting_set --app=$app --key=radarr_api_key --value="$radarr_api_key"
+ynh_app_setting_set --app=$app --key=sonarr_url --value="$sonarr_url"
+ynh_app_setting_set --app=$app --key=sonarr_api_key --value="$sonarr_api_key"
+ynh_app_setting_set --app=$app --key=jellyseerr_url --value="$jellyseerr_url"
+ynh_app_setting_set --app=$app --key=jellyseerr_api_key --value="$jellyseerr_api_key"
+ynh_app_setting_set --app=$app --key=jellystat_url --value="$jellystat_url"
+ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_key"
+
+#=================================================
+# ACCESS AND CONFIG
+#=================================================
+ynh_script_progression "Starting setup process for access and config..."
 
 # Add Janitorr to the multimedia group
 ynh_print_info "Adding Janitorr to multimedia group..."
-usermod -aG multimedia $app
+
+# Build YunoHost multimedia directories
+ynh_multimedia_build_main_dir
+# Enable writing into these directories
+ynh_multimedia_addaccess $app
 
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
@@ -105,7 +144,7 @@ application:
 
 clients:
   jellyfin:
-    enabled: true
+    enabled: $jellyfin_usage
     url: "$jellyfin_url"
     api-key: "$jellyfin_api_key"
     username: "$jellyfin_username"
@@ -123,12 +162,12 @@ clients:
     leaving-soon-tv: "Shows (Leaving Soon)"
     leaving-soon-movies: "Movies (Leaving Soon)"
   radarr:
-    enabled: true
+    enabled: $radarr_usage
     url: "$radarr_url"
     api-key: "$radarr_api_key"
     only-delete-files: false
   sonarr:
-    enabled: true
+    enabled: $sonarr_usage
     url: "$sonarr_url"
     api-key: "$sonarr_api_key"
     delete-empty-shows: true
@@ -139,28 +178,33 @@ clients:
     api-key: "cd0912f129d348c9b69bb20d49fcbe55"
 
   jellyseerr:
-    enabled: true
+    enabled: $jellyseerr_usage
     url: "$jellyseerr_url"
     api-key: "$jellyseerr_api_key"
     match-server: false
   jellystat:
-    enabled: true
+    enabled: $jellystat_usage
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
 EOL
 
+#=================================================
+# EXECUTABLE AND SYSTEM CONF SETUP
+#=================================================
+ynh_script_progression "Setting up the app executable and system configs..."
+
 ynh_print_info "Downloading Janitorr JAR..."
-wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
+ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
 chown -R "$app:$app" "$install_dir"
 
 ynh_print_info "Adding systemd service..."
 yunohost service add "$app" --description="Janitorr cleanup service"
 ynh_config_add_systemd
 
-ynh_print_info "Adding nginx configuration..."
-ynh_config_add_nginx
+# ynh_print_info "Adding nginx configuration..."
+# ynh_config_add_nginx
 
 ynh_print_info "Starting service..."
 ynh_systemctl --service="$app" --action="start"
 
-ynh_print_info "Installation completed!"
+ynh_script_progression "Installation completed!"
