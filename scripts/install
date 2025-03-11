@@ -23,7 +23,7 @@ if ls /etc/yunohost/apps | grep -q "radarr"; then
         radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
 else
         ynh_print_warn "Couldn't find Radarr port and api_key..."
-        radarr_port=""
+        radarr_port=$radarr_port
         radarr_api_key=$radarr_api_key
 fi
 if ls /etc/yunohost/apps | grep -q "sonarr"; then
@@ -32,7 +32,7 @@ if ls /etc/yunohost/apps | grep -q "sonarr"; then
         sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
 else
         ynh_print_warn "Couldn't find Sonarr port and api_key..."
-        sonarr_port=""
+        sonarr_port=$sonarr_port
         sonarr_api_key=$sonarr_api_key
 fi
 if ls /etc/yunohost/apps | grep -q "jellystat"; then
@@ -41,7 +41,7 @@ if ls /etc/yunohost/apps | grep -q "jellystat"; then
         jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
 else
         ynh_print_warn "Couldn't find Jellystat port and api_key..."
-        jellystat_port=""
+        jellystat_port=$jellystat_port
         jellystat_api_key=$jellystat_api_key
 fi
 if ls /etc/yunohost/apps | grep -q "jellyfin"; then
@@ -49,7 +49,7 @@ if ls /etc/yunohost/apps | grep -q "jellyfin"; then
         jellyfin_url="http://127.0.0.1:$jellyfin_port"
 else
         ynh_print_warn "Couldn't find Jellyfin port and api_key..."
-        jellyfin_port=""
+        jellyfin_port=$jellyfin_port
         jellyfin_api_key=$jellyfin_api_key
 fi
 if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
@@ -60,7 +60,7 @@ if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
 
 else
         ynh_print_warn "Couldn't find Jellyseerr port and api_key..."
-        jellyseerr_port=""
+        jellyseerr_port=$jellyseerr_port
         jellyseerr_api_key=$jellyseerr_api_key
 fi
 
