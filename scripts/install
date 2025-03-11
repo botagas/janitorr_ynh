@@ -44,14 +44,24 @@ else
         jellystat_port=""
         jellystat_api_key=""
 fi
+if ls /etc/yunohost/apps | grep -q "jellyfin"; then
+        jellyfin_port=$(ynh_app_setting_get --app jellyfin --key port)
+        jellyfin_url="http://127.0.0.1:$jellyfin_port"
+else
+        ynh_print_warn "Couldn't find Jellyfin port and api_key..."
+        jellyfin_port=""
+        jellyfin_api_key=""
+fi
 if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
         jellyseerr_port=$(ynh_app_setting_get --app jellyseerr --key port)
         jellyseerr_url="http://127.0.0.1:$jellyseerr_port"
-        jellyseerr_api_key=$(ynh_app_setting_get --app jellyseerr --key api_key)
+        jellyseerr_api_key=$(curl --silent --show-error --fail -X GET "http://localhost:5055/api/v1/settings/main" | jq -r '.apiKey')
+        jellyfin_api_key=$(curl --silent --show-error --fail -X GET "http://localhost:5055/api/v1/settings/jellyfin" | jq -r '.apiKey')
+
 else
-        ynh_print_warn "Couldn't find Radarr port and api_key..."
-        radarr_port=""
-        radarr_api_key=""
+        ynh_print_warn "Couldn't find Jellyseerr port and api_key..."
+        jellyseerr_port=""
+        jellyseerr_api_key=""
 fi
 
 # Save user inputs from manifest into app settings
