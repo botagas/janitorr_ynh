@@ -44,7 +44,7 @@ ram.runtime = "100M"
     ask.en = "Enter the URL of your Jellyseerr server."
     help.en = "This setting is fetched AUTOMATICALLY during install if Jellystat is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
     type = "string"
-    default = "emptystring"
+    default = "http://example:port"
 
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
@@ -56,7 +56,7 @@ ram.runtime = "100M"
     ask.en = "Enter the URL of your Sonarr server."
     help.en = "This setting is fetched AUTOMATICALLY during install if Sonarr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
     type = "string"
-    default = "emptystring"
+    default = "http://example:port"
 
     [install.radarr_url]
     ask.en = "Enter the URL of your Radarr server."
