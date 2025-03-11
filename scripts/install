@@ -22,6 +22,7 @@ if ls /etc/yunohost/apps | grep -q "radarr"; then
         radarr_url="http://127.0.0.1:$radarr_port"
         radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
 else
+        ynh_print_warn "Couldn't find Radarr port and api_key..."
         radarr_port=""
         radarr_api_key=""
 fi
@@ -30,6 +31,7 @@ if ls /etc/yunohost/apps | grep -q "sonarr"; then
         sonarr_url="http://127.0.0.1:$sonarr_port"
         sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
 else
+        ynh_print_warn "Couldn't find Sonarr port and api_key..."
         sonarr_port=""
         sonarr_api_key=""
 fi
@@ -38,8 +40,18 @@ if ls /etc/yunohost/apps | grep -q "jellystat"; then
         jellystat_url="http://127.0.0.1:$jellystat_port"
         jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
 else
+        ynh_print_warn "Couldn't find Jellystat port and api_key..."
         jellystat_port=""
         jellystat_api_key=""
+fi
+if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
+        jellyseerr_port=$(ynh_app_setting_get --app jellyseerr --key port)
+        jellyseerr_url="http://127.0.0.1:$jellyseerr_port"
+        jellyseerr_api_key=$(ynh_app_setting_get --app jellyseerr --key api_key)
+else
+        ynh_print_warn "Couldn't find Radarr port and api_key..."
+        radarr_port=""
+        radarr_api_key=""
 fi
 
 # Save user inputs from manifest into app settings
