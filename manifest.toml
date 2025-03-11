@@ -50,18 +50,18 @@ ram.runtime = "100M"
     
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
-    help.en = "Janitorr requires you to create an API key."
+    help.en = "Janitorr requires you to create an API key. This is fetched AUTOMATICALLY ONLY IF you have Jellyseer installed and configured (leave as it is)."
     type = "string"
     default = "emptystring"
 
     [install.jellyfin_username]
-    ask.en = "Enter the username for Jellyfin user."
+    ask.en = "Enter the username for the Jellyfin user."
     help.en = "Janitorr requires a separate user for monitoring media."
     type = "string"
     default = "emptystring"
 
     [install.jellyfin_password]
-    ask.en = "Enter the password for Jellyfin user."
+    ask.en = "Enter the password for the Jellyfin user."
     type = "string"
     default = "emptystring"
 
@@ -103,7 +103,7 @@ ram.runtime = "100M"
 
     [install.jellyseerr_url]
     ask.en = "Enter the URL of your Jellyseerr server."
-    help.en = "This setting is NOT FETCHED AUTOMATICALLY during install if Jellyseerr is installed on YunoHost."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellystat is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
     type = "string"
     default = "emptystring"
 
