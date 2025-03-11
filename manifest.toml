@@ -50,7 +50,7 @@ ram.runtime = "100M"
     
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
-    help.en = "Janitorr requires you to create an API key. This is fetched AUTOMATICALLY ONLY IF you have Jellyseer installed and configured (leave as it is)."
+    help.en = "Janitorr requires you to create an API key (replace with API key). This is fetched AUTOMATICALLY ONLY IF you have Jellyseer installed and configured (leave as it is)."
     type = "string"
     default = "emptystring"
 
