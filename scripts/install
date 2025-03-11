@@ -56,7 +56,7 @@ if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
         jellyseerr_port=$(ynh_app_setting_get --app jellyseerr --key port)
         jellyseerr_url="http://127.0.0.1:$jellyseerr_port"
         jellyseerr_api_key=$(curl --silent --show-error --fail -X GET "http://127.0.0.1:5055/api/v1/settings/main" -H "accept: application/json" | jq -r '.apiKey')
-        jellyfin_api_key=$(curl --silent --show-error --fail -X GET "http://127.0.0.1:5055/api/v1/settings/jellyfin" -H "accept: application/json" | jq -r '.apiKey')
+        jellyfin_api_key=$(curl --silent --show-error --fail -X GET "http://127.0.0.1:5055/api/v1/settings/jellyfin" -H "accept: application/json" -H "X-Api-Key: $jellyseerr_api_key" | jq -r '.apiKey')
 
 else
         ynh_print_warn "Couldn't find Jellyseerr port and api_key..."
