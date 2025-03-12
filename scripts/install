@@ -129,14 +129,14 @@ application:
   media-deletion:
     enabled: true
     movie-expiration:
-      5: 30d 
-      10: 30d 
-      15: 60d 
+      5: $leaving_soon
+      10: $leaving_soon
+      15: $leaving_soon
       20: 120d 
     season-expiration:
-      5: 30d 
-      10: 30d 
-      15: 60d 
+      5: $leaving_soon
+      10: $leaving_soon
+      15: $leaving_soon 
       20: 120d 
 
   tag-based-deletion:
