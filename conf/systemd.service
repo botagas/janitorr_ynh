@@ -7,6 +7,8 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
+Environment=LANG=en_US.UTF-8
+Environment=LC_ALL=en_US.UTF-8
 ExecStart=__INSTALL_DIR__/jdk/bin/java -Dspring.config.location=file:/var/www/janitorr/src/main/resources/application.yml -Dfile.encoding=UTF-8 -jar __INSTALL_DIR__/janitorr.jar
 StandardOutput=journal
 StandardError=journal
