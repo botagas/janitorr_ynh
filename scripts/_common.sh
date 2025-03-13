@@ -23,18 +23,11 @@ bazarr_url="${bazarr_url1:http://example.tld}"
 
 sonarr_url="${sonarr_url1:http://example.tld}"
 
-jellystat_port="${jellystat_port1:1234}"
 jellystat_url="${jellystat_url1:http://example.tld}"
-jellystat_api_key="${jellystat_api_key1:examplestring}"
 
-jellyfin_port="${jellyfin_port1:1234}"
 jellyfin_url="${jellyfin_url1:http://example.tld}"
-jellyfin_username="${jellyfin_username1:Janitorr}"
-jellyfin_password="${jellyfin_password1:Janitorr}"
 
-jellyseerr_port="${jellyseerr_port1:1234}"
 jellyseerr_url="${jellyseerr_url1:http://example.tld}"
-jellyseerr_api_key="${jellyseerr_api_key1:examplestring}"
 jellyfin_api_key="${jellyfin_api_key1:examplestring}"
 
 # Find service API keys and ports
