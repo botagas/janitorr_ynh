@@ -16,6 +16,7 @@ ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
+detect_and_read_radarr_and_sonarr_settings
 
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
