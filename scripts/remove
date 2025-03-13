@@ -23,6 +23,11 @@ ynh_print_info "Removing app specific cron and etc data if present..."
 ynh_safe_rm "/etc/cron.d/$app"
 ynh_safe_rm "/etc/$app"
 
+# Remove the app-specific logrotate config
+ynh_remove_logrotate
+
+ynh_safe_rm "/var/log/$app"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
