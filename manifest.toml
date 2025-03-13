@@ -121,11 +121,11 @@ ram.runtime = "100M"
     type = "string"
     default = ""
 
-    [install.jellyseerr_api_key]
-    ask.en = "Enter the API key for your Jellyseerr server."
-    help.en = "Leave blank if you do not use this service."
-    type = "string"
-    default = ""
+    # [install.jellyseerr_api_key]
+    # ask.en = "Enter the API key for your Jellyseerr server."
+    # help.en = "Leave blank if you do not use this service."
+    # type = "string"
+    # default = ""
 
     [install.leaving_soon_dir]
     ask.en = "Enter the path for the 'leaving soon' directory."
