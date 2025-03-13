@@ -22,6 +22,13 @@ if ls /etc/yunohost/apps | grep -q "radarr"; then
 else
         ynh_print_warn "Couldn't find Radarr port and api_key..."
 fi
+if ls /etc/yunohost/apps | grep -q "bazarr"; then
+        bazarr_port=$(ynh_app_setting_get --app bazarr --key port)
+        bazarr_url="http://127.0.0.1:$bazarr_port"
+        bazarr_api_key=$(ynh_app_setting_get --app bazarr --key api_key)
+else
+        ynh_print_warn "Couldn't find Badarr port and api_key..."
+fi
 if ls /etc/yunohost/apps | grep -q "sonarr"; then
         sonarr_port=$(ynh_app_setting_get --app sonarr --key port)
         sonarr_url="http://127.0.0.1:$sonarr_port"
