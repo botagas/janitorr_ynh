@@ -18,13 +18,13 @@ ynh_print_info "Setting up variables..."
 
 # Find service API keys and ports
 detect_and_read_radarr_and_sonarr_settings() {
-radarr_url="${radarr_url1:http://example.tld}"
-bazarr_url="${bazarr_url1:http://example.tld}"
-sonarr_url="${sonarr_url1:http://example.tld}"
-jellystat_url="${jellystat_url1:http://example.tld}"
-jellyfin_url="${jellyfin_url1:http://example.tld}"
-jellyseerr_url="${jellyseerr_url1:http://example.tld}"
-jellyfin_api_key="${jellyfin_api_key1:examplestring}"
+radarr_url="${radarr_url:http://example.tld}"
+bazarr_url="${bazarr_url:http://example.tld}"
+sonarr_url="${sonarr_url:http://example.tld}"
+jellystat_url="${jellystat_url:http://example.tld}"
+jellyfin_url="${jellyfin_url:http://example.tld}"
+jellyseerr_url="${jellyseerr_url:http://example.tld}"
+jellyfin_api_key="${jellyfin_api_key:examplestring}"
 if ls /etc/yunohost/apps | grep -q "radarr"; then
         radarr_port=$(ynh_app_setting_get --app radarr --key port)
         radarr_url="http://127.0.0.1:$radarr_port"
