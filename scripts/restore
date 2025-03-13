@@ -36,6 +36,8 @@ ynh_multimedia_addaccess $app
 #=================================================
 
 yunohost service add "$app" --description="Janitorr cleanup service"
+ynh_restore "/var/log/$app/"
+ynh_restore "/etc/logrotate.d/$app"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
