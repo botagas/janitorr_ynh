@@ -17,17 +17,11 @@ media_server_leaving_soon_dir="/home/yunohost.multimedia/share/leavingsoon"
 ynh_print_info "Setting up variables..."
 
 # Ensure all variables are initialized with user-provided values. This is to ensure Janitorr runs, because even if a service is set to false, it checks for empty variables.
-radarr_port="${radarr_port1:1234}"
 radarr_url="${radarr_url1:http://example.tld}"
-radarr_api_key="${radarr_api_key1:examplestring}"
 
-bazarr_port="${bazarr_port1:1234}"
 bazarr_url="${bazarr_url1:http://example.tld}"
-bazarr_api_key="${bazarr_api_key1:examplestring}"
 
-sonarr_port="${sonarr_port1:1234}"
 sonarr_url="${sonarr_url1:http://example.tld}"
-sonarr_api_key="${sonarr_api_key1:examplestring}"
 
 jellystat_port="${jellystat_port1:1234}"
 jellystat_url="${jellystat_url1:http://example.tld}"
