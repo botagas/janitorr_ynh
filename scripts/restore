@@ -35,7 +35,7 @@ ynh_multimedia_addaccess $app
 # ADD SERVICE
 #=================================================
 
-yunohost service add "$app" --description="Janitorr cleanup service"
+yunohost service add "$app" --description="Janitorr cleanup service" --log="/var/log/$app/janitorr.log"
 ynh_restore "/var/log/$app/"
 ynh_restore "/etc/logrotate.d/$app"
 
