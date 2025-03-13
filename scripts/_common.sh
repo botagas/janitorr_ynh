@@ -16,21 +16,15 @@ media_server_leaving_soon_dir="/home/yunohost.multimedia/share/leavingsoon"
 #=================================================
 ynh_print_info "Setting up variables..."
 
-# Ensure all variables are initialized with user-provided values. This is to ensure Janitorr runs, because even if a service is set to false, it checks for empty variables.
+# Find service API keys and ports
+detect_and_read_radarr_and_sonarr_settings() {
 radarr_url="${radarr_url1:http://example.tld}"
-
 bazarr_url="${bazarr_url1:http://example.tld}"
-
 sonarr_url="${sonarr_url1:http://example.tld}"
-
 jellystat_url="${jellystat_url1:http://example.tld}"
-
 jellyfin_url="${jellyfin_url1:http://example.tld}"
-
 jellyseerr_url="${jellyseerr_url1:http://example.tld}"
 jellyfin_api_key="${jellyfin_api_key1:examplestring}"
-
-# Find service API keys and ports
 if ls /etc/yunohost/apps | grep -q "radarr"; then
         radarr_port=$(ynh_app_setting_get --app radarr --key port)
         radarr_url="http://127.0.0.1:$radarr_port"
@@ -74,3 +68,4 @@ if ls /etc/yunohost/apps | grep -q "jellyseerr"; then
 else
         ynh_print_warn "Couldn't find Jellyseerr port and api_key..."
 fi
+}
