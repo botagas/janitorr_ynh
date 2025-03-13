@@ -61,7 +61,6 @@ ynh_multimedia_addaccess $app
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
 mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
-mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
 mkdir -p "/var/log/$app/janitorr.log"
 
 # Create application.yml using a template
