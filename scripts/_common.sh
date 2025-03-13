@@ -33,6 +33,8 @@ jellystat_api_key="${jellystat_api_key:examplestring}"
 
 jellyfin_port="${jellyfin_port:1234}"
 jellyfin_url="${jellyfin_url:http://example.tld}"
+jellyfin_username="${jellyfin_username:Janitorr}"
+jellyfin_password="${jellyfin_password:Janitorr}"
 
 jellyseerr_port="${jellyseerr_port:1234}"
 jellyseerr_url="${jellyseerr_url:http://example.tld}"
