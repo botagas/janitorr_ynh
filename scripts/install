@@ -16,31 +16,7 @@ ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
 
 ynh_print_info "Setting up variables..."
-# Find service API keys and ports
-if ls /etc/yunohost/apps | grep -q "radarr"; then
-        radarr_port=$(ynh_app_setting_get --app radarr --key port)
-        radarr_url="http://127.0.0.1:$radarr_port"
-        radarr_api_key=$(ynh_app_setting_get --app radarr --key api_key)
-else
-        radarr_port=""
-        radarr_api_key=""
-fi
-if ls /etc/yunohost/apps | grep -q "sonarr"; then
-        sonarr_port=$(ynh_app_setting_get --app sonarr --key port)
-        sonarr_url="http://127.0.0.1:$sonarr_port"
-        sonarr_api_key=$(ynh_app_setting_get --app sonarr --key api_key)
-else
-        sonarr_port=""
-        sonarr_api_key=""
-fi
-if ls /etc/yunohost/apps | grep -q "jellystat"; then
-        jellystat_port=$(ynh_app_setting_get --app jellystat --key port)
-        jellystat_url="http://127.0.0.1:$jellystat_port"
-        jellystat_api_key=$(ynh_app_setting_get --app jellystat --key api_key)
-else
-        jellystat_port=""
-        jellystat_api_key=""
-fi
+detect_and_read_radarr_and_sonarr_settings
 
 # Save user inputs from manifest into app settings
 ynh_app_setting_set --app=$app --key=jellyfin_url --value="$jellyfin_url"
@@ -85,7 +61,6 @@ ynh_multimedia_addaccess $app
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
 mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
-mkdir -p "/var/log/$app/janitorr.log"
 
 # Create application.yml using a template
 ynh_print_info "Generating application.yml..."
@@ -118,14 +93,14 @@ application:
   media-deletion:
     enabled: true
     movie-expiration:
-      5: 30d 
-      10: 30d 
-      15: 60d 
+      5: $leaving_soon
+      10: $leaving_soon
+      15: $leaving_soon
       20: 120d 
     season-expiration:
-      5: 30d 
-      10: 30d 
-      15: 60d 
+      5: $leaving_soon
+      10: $leaving_soon
+      15: $leaving_soon 
       20: 120d 
 
   tag-based-deletion:
@@ -203,7 +178,8 @@ yunohost service add "$app" --description="Janitorr cleanup service" --log="/var
 ynh_config_add_systemd
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate --logfile="/var/log/$app/"
+ynh_config_add_logrotate
+touch /var/log/$app/$app.log
 
 # ynh_print_info "Adding nginx configuration..."
 # ynh_config_add_nginx

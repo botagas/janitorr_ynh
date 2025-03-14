@@ -42,57 +42,6 @@ ram.runtime = "100M"
     choices.false = "false"
     default = "false"
 
-    [install.jellyfin_url]
-    ask.en = "Enter the URL of your Jellyfin server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
-    type = "string"
-    default = "http://example:port"
-    
-    [install.jellyfin_api_key]
-    ask.en = "Enter the API key for your Jellyfin server."
-    help.en = "Janitorr requires you to create an API key."
-    type = "string"
-    default = "emptystring"
-
-    [install.jellyfin_username]
-    ask.en = "Enter the username for Jellyfin user."
-    help.en = "Janitorr requires a separate user for monitoring media."
-    type = "string"
-    default = "emptystring"
-
-    [install.jellyfin_password]
-    ask.en = "Enter the password for Jellyfin user."
-    type = "string"
-    default = "emptystring"
-
-    [install.radarr_usage]
-    ask.en = "Do you use Radarr?"
-    help.en = "This disables communication with the mentioned service in Janitorr."
-    type = "select"
-    choices.true = "true"
-    choices.false = "false"
-    default = "false"
-
-    [install.radarr_url]
-    ask.en = "Enter the URL of your Radarr server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Radarr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
-    type = "string"
-    default = "http://example:port"
-
-    [install.sonarr_usage]
-    ask.en = "Do you use Sonarr?"
-    help.en = "This disables communication with the mentioned service in Janitorr."
-    type = "select"
-    choices.true = "true"
-    choices.false = "false"
-    default = "false"
-
-    [install.sonarr_url]
-    ask.en = "Enter the URL of your Sonarr server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Sonarr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
-    type = "string"
-    default = "emptystring"
-
     [install.jellyseerr_usage]
     ask.en = "Do you use Jellyseerr?"
     help.en = "This disables communication with the mentioned service in Janitorr."
@@ -100,18 +49,6 @@ ram.runtime = "100M"
     choices.true = "true"
     choices.false = "false"
     default = "false"
-
-    [install.jellyseerr_url]
-    ask.en = "Enter the URL of your Jellyseerr server."
-    help.en = "This setting is NOT FETCHED AUTOMATICALLY during install if Jellyseerr is installed on YunoHost."
-    type = "string"
-    default = "emptystring"
-
-    [install.jellyseerr_api_key]
-    ask.en = "Enter the API key for your Jellyseerr server."
-    help.en = "Leave blank if you do not use this service."
-    type = "string"
-    default = "emptystring"
 
     [install.jellystat_usage]
     ask.en = "Do you use Jellystat?"
@@ -121,11 +58,74 @@ ram.runtime = "100M"
     choices.false = "false"
     default = "false"
 
+    [install.sonarr_usage]
+    ask.en = "Do you use Sonarr?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
+
+    [install.radarr_usage]
+    ask.en = "Do you use Radarr?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
+    
+    [install.jellyfin_url]
+    ask.en = "Enter the URL of your Jellyfin server."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyfin is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
+
+    [install.jellyseerr_url]
+    ask.en = "Enter the URL of your Jellyseerr server."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellyseerr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
+
     [install.jellystat_url]
     ask.en = "Enter the URL of your Jellystat server."
-    help.en = "This setting is fetched AUTOMATICALLY during install if Jellystat is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Jellystat is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
     type = "string"
-    default = "http://example:port"
+    default = ""
+
+    [install.sonarr_url]
+    ask.en = "Enter the URL of your Sonarr server."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Sonarr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
+
+    [install.radarr_url]
+    ask.en = "Enter the URL of your Radarr server."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Radarr is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
+    
+    [install.jellyfin_api_key]
+    ask.en = "Enter the API key for your Jellyfin server."
+    help.en = "Janitorr requires you to create an API key (replace with API key). This is fetched AUTOMATICALLY ONLY IF you have Jellyseer installed and configured (leave as it is)."
+    type = "string"
+    default = ""
+
+    [install.jellyfin_username]
+    ask.en = "Enter the username for the Jellyfin user."
+    help.en = "Janitorr requires a separate user for monitoring media."
+    type = "string"
+    default = ""
+
+    [install.jellyfin_password]
+    ask.en = "Enter the password for the Jellyfin user."
+    type = "string"
+    default = ""
+
+    # [install.jellyseerr_api_key]
+    # ask.en = "Enter the API key for your Jellyseerr server."
+    # help.en = "Leave blank if you do not use this service."
+    # type = "string"
+    # default = ""
 
     [install.leaving_soon_dir]
     ask.en = "Enter the path for the 'leaving soon' directory."
