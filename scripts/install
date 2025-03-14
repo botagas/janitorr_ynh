@@ -61,7 +61,6 @@ ynh_multimedia_addaccess $app
 # Create multimedia directories
 ynh_print_info "Creating necessary directories..."
 mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
-mkdir -p "/var/log/$app/janitorr.log"
 
 # Create application.yml using a template
 ynh_print_info "Generating application.yml..."
@@ -179,7 +178,8 @@ yunohost service add "$app" --description="Janitorr cleanup service" --log="/var
 ynh_config_add_systemd
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate --logfile="/var/log/$app/"
+ynh_config_add_logrotate
+touch /var/log/$app/$app.log
 
 # ynh_print_info "Adding nginx configuration..."
 # ynh_config_add_nginx
