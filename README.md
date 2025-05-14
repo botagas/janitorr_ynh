@@ -26,7 +26,7 @@ If paired with Jellystat, it will determine media inactivity based on data recor
 
 
 
-**Shipped version:** 1.7.0~ynh1
+**Shipped version:** 1.7.0~ynh2
 
 
 
