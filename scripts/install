@@ -166,6 +166,12 @@ clients:
     enabled: $jellystat_usage
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
+  streamystats:
+    enabled: false
+    whole-tv-show: true
+    url: "http://streamystats:3000"
+    username: Janitorr
+    password: janitorr
 EOL
 
 #=================================================
