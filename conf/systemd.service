@@ -18,7 +18,7 @@ ExecStart=__INSTALL_DIR__/jdk/bin/java \
 -XX:InitiatingHeapOccupancyPercent=30 \
 -XX:G1ReservePercent=10 \
 -XX:G1HeapWastePercent=5 \
--Dspring.config.location=file:__INSTALL_DIR__/src/main/resources/application.yml \
+-Dspring.config.location=file:__INSTALL_DIR__/application.yml \
 -Dfile.encoding=UTF-8 \
 -jar __INSTALL_DIR__/janitorr.jar
 StandardOutput=append:/var/log/__APP__/__APP__.log
