@@ -119,6 +119,9 @@ application:
     max-age: 30d # Maximum age to keep any episode at all - even the last 10 episodes would expire after 30 days in this example
 
 clients:
+  default:
+    connect-timeout: 120s
+    read-timeout: 120s
   jellyfin:
     enabled: $jellyfin_usage
     url: "$jellyfin_url"
@@ -128,6 +131,7 @@ clients:
     delete: true
     leaving-soon-tv: "Shows (Leaving Soon)"
     leaving-soon-movies: "Movies (Leaving Soon)"
+    leaving-soon-type: MOVIES_AND_TV
   emby:
     enabled: false
     url: "http://localhost:8096"
