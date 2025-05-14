@@ -20,7 +20,8 @@ ExecStart=__INSTALL_DIR__/jdk/bin/java \
 -XX:G1HeapWastePercent=5 \
 -Dspring.config.location=file:__INSTALL_DIR__/src/main/resources/application.yml \
 -Dfile.encoding=UTF-8 \
--jar __INSTALL_DIR__/janitorr.jarStandardOutput=append:/var/log/__APP__/__APP__.log
+-jar __INSTALL_DIR__/janitorr.jar
+StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
 # Prevents systemd from marking the app as failed if it exits with errors
