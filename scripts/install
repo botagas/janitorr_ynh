@@ -18,7 +18,7 @@ pushd "$install_dir"
   git init
   git remote add origin https://github.com/Schaka/janitorr.git
   git fetch --depth 1 origin tag v1.7.2
-  git checkout v1.7.2
+  git checkout -f v1.7.2
 popd
 
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
