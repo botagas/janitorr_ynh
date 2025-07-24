@@ -181,16 +181,16 @@ ynh_script_progression "Setting up the app executable and system configs..."
 
 ynh_print_info "Building Janitorr native executable..."
 
-# Make gradlew executable
+# Ensure app user owns the install directory for building
+chown -R "$app:$app" "$install_dir"
 chmod +x "$install_dir/gradlew"
 
 # Build the native executable using Gradle
-cd "$install_dir"
-ynh_exec_as_app $env_string ./gradlew nativeCompile
-
-# Copy the built native executable to the expected location
-ynh_exec_as_app cp "$install_dir/build/native/nativeCompile/janitorr" "$install_dir/janitorr"
-chmod +x "$install_dir/janitorr"
+pushd "$install_dir"
+  ynh_exec_as_app $env_string ./gradlew nativeCompile
+  ynh_exec_as_app cp "build/native/nativeCompile/janitorr" "janitorr"
+  chmod +x "janitorr"
+popd
 
 chown -R "$app:$app" "$install_dir"
 

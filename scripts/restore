@@ -14,26 +14,6 @@ ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
 
-# Set up JDK and Gradle environment
-ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
-env_string="env PATH=$install_dir/jdk/bin:$PATH JAVA_HOME=$install_dir/jdk GRADLE_USER_HOME=$install_dir/.gradle"
-
-# Rebuild native executable (native images may not be portable)
-if [ ! -f "$install_dir/janitorr" ] || [ ! -x "$install_dir/janitorr" ]; then
-    ynh_print_info "Rebuilding Janitorr native executable..."
-    
-    # Make gradlew executable
-    chmod +x "$install_dir/gradlew"
-    
-    # Build the native executable using Gradle
-    cd "$install_dir"
-    ynh_exec_as_app $env_string ./gradlew nativeCompile
-    
-    # Copy the built native executable to the expected location
-    ynh_exec_as_app cp "$install_dir/build/native/nativeCompile/janitorr" "$install_dir/janitorr"
-    chmod +x "$install_dir/janitorr"
-fi
-
 chown -R "$app:$app" "$install_dir"
 
 #=================================================
