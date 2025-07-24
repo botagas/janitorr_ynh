@@ -29,7 +29,6 @@ pushd "$install_dir"
     git fetch --depth 1 origin tag v1.7.2
     git checkout -f v1.7.2
 popd
-popd
 
 ynh_setup_source --dest_dir="$install_dir/jdk" --source_id="jdk"
 

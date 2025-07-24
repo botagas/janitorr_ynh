@@ -182,12 +182,12 @@ ram.runtime = "100M"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.sources.jdk]
-    amd64.url = "https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23.0.2%2B7/OpenJDK23U-jdk_x64_linux_hotspot_23.0.2_7.tar.gz"
-    amd64.sha256 = "870ac8c05c6fe563e7a3878a47d0234b83c050e83651d2c47e8b822ec74512dd"
+    amd64.url = "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.1/graalvm-community-jdk-23.0.1_linux-x64_bin.tar.gz"
+    amd64.sha256 = "e26a0a74064b1689c056b5f24d7cc3b271f57f576be063b139d27aafa1322951"
     autoupdate.strategy = "latest_github_release"
-    autoupdate.version_regex = "jdk-(\\d+\\.\\d+\\.\\d+)\\+(.*)"
-    autoupdate.upstream = "https://github.com/adoptium/temurin23-binaries"
-    autoupdate.asset.amd64 = "OpenJDK.*-jdk_x64_linux_hotspot_.*\\.tar\\.gz$"
+    autoupdate.version_regex = "jdk-(\\d+\\.\\d+\\.\\d+)"
+    autoupdate.upstream = "https://github.com/graalvm/graalvm-ce-builds"
+    autoupdate.asset.amd64 = "graalvm-community-jdk-.*_linux-x64_bin\\.tar\\.gz$"
     
     [resources.system_user]
     home = "/var/www/janitorr"
