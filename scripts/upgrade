@@ -37,7 +37,7 @@ chmod +x "$install_dir/gradlew"
 
 # Build the native executable using Gradle
 pushd "$install_dir"
-    ynh_exec_as_app $env_string ./gradlew nativeCompile
+    ynh_exec_as_app $env_string ./gradlew nativeCompile -Pversion=1.7.2
     ynh_exec_as_app cp "build/native/nativeCompile/janitorr" "janitorr"
     chmod +x "janitorr"
 popd
