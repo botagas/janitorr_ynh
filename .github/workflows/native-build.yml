@@ -38,7 +38,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: janitorr/build/native/nativeCompile/**
-        tag_name: latest
+        tag_name: ${{ github.ref == 'refs/heads/testing' && 'testing-latest' || 'latest' }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
