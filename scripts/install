@@ -219,17 +219,15 @@ fi
 chown -R "$app:$app" "$install_dir"
 
 ynh_print_info "Adding systemd service..."
+
 yunohost service add "$app" --description="Janitorr cleanup service" --log="/var/log/$app/$app.log"
+
 ynh_config_add_systemd
 
-# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
-touch /var/log/$app/$app.log
-
-# ynh_print_info "Adding nginx configuration..."
-# ynh_config_add_nginx
 
 ynh_print_info "Starting service..."
+
 ynh_systemctl --service="$app" --action="start"
 
 ynh_script_progression "Installation completed!"
