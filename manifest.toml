@@ -205,5 +205,3 @@ ram.runtime = "100M"
     [resources.ports]
     main_app.default = 8978
     main_management.default = 8979
-
-    [resources.apt]
