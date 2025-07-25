@@ -55,11 +55,20 @@ jobs:
           echo "RELEASE_BIN_NAME=janitorr-master" >> $GITHUB_ENV
         fi
 
+    - name: Set release tag name
+      run: |
+        REF_NAME="${GITHUB_REF##*/}"
+        if [[ "$REF_NAME" == *-latest ]]; then
+          echo "RELEASE_TAG_NAME=$REF_NAME" >> $GITHUB_ENV
+        else
+          echo "RELEASE_TAG_NAME=${REF_NAME}-latest" >> $GITHUB_ENV
+        fi
+
     - name: Upload Native Binary to GitHub Releases
       uses: softprops/action-gh-release@v1
       with:
         files: janitorr/build/native/nativeCompile/${{ env.RELEASE_BIN_NAME }}
-        tag_name: ${{ github.ref_name }}
+        tag_name: ${{ env.RELEASE_TAG_NAME }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
