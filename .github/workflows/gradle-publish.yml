@@ -49,9 +49,9 @@ jobs:
       run: |
         cd janitorr/build/libs
         if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
-          mv janitorr-*.jar janitorr-testing.jar
+          [ -f janitorr-testing.jar ] || mv janitorr-*.jar janitorr-testing.jar
         else
-          mv janitorr-*.jar janitorr-master.jar
+          [ -f janitorr-master.jar ] || mv janitorr-*.jar janitorr-master.jar
         fi
 
     - name: Set release jar name
