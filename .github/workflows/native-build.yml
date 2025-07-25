@@ -34,11 +34,28 @@ jobs:
         cd janitorr
         ./gradlew nativeCompile
 
+    - name: Rename Native Executable for Release
+      run: |
+        cd janitorr/build/native/nativeCompile
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+          mv janitorr janitorr-testing
+        else
+          mv janitorr janitorr-master
+        fi
+
+    - name: Set release binary name
+      run: |
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+          echo "RELEASE_BIN_NAME=janitorr-testing" >> $GITHUB_ENV
+        else
+          echo "RELEASE_BIN_NAME=janitorr-master" >> $GITHUB_ENV
+        fi
+
     - name: Upload Native Binary to GitHub Releases
       uses: softprops/action-gh-release@v1
       with:
-        files: janitorr/build/native/nativeCompile/**
-        tag_name: ${{ github.ref == 'refs/heads/testing' && 'testing-latest' || 'latest' }}
+        files: janitorr/build/native/nativeCompile/${{ env.RELEASE_BIN_NAME }}
+        tag_name: ${{ github.ref_name }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
