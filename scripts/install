@@ -180,7 +180,30 @@ EOL
 ynh_script_progression "Setting up the app executable and system configs..."
 
 ynh_print_info "Downloading Janitorr JAR..."
-ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
+if [[ "$branch" == "master" || "$branch" == "testing" ]]; then
+  # Download JAR
+  if [[ "$branch" == "testing" ]]; then
+    jar_name="janitorr-testing.jar"
+    tag_name="testing"
+  else
+    jar_name="janitorr-master.jar"
+    tag_name="master"
+  fi
+  ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$jar_name"
+elif [[ "$branch" == "master-native" || "$branch" == "testing-native" ]]; then
+  # Download native binary
+  if [[ "$branch" == "testing-native" ]]; then
+    bin_name="janitorr-testing"
+    tag_name="testing-native"
+  else
+    bin_name="janitorr-master"
+    tag_name="master-native"
+  fi
+  ynh_hide_warnings wget -O "$install_dir/janitorr" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$bin_name"
+  chmod +x "$install_dir/janitorr"
+else
+  ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/master/janitorr-master.jar"
+fi
 chown -R "$app:$app" "$install_dir"
 
 ynh_print_info "Adding systemd service..."

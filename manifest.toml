@@ -173,6 +173,13 @@ ram.runtime = "100M"
     type = "string"
     default = "janitorr_keep"
 
+    [install.branch]
+    ask.en = "Which branch do you want to use?"
+    help.en = "native builds are aimed towards amd64 architectures"
+    type = "select"
+    choices = ["master", "master-native"]
+    default = "true"
+
 [resources]
     [resources.sources]
     [resources.sources.main]

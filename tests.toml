@@ -34,5 +34,6 @@ test_format = 1.0
     args.jellyseerr_usage = "false"
     args.radarr_usage = "false"
     args.sonarr_usage = "false"
+    args.branch = "testing-native"
 
     exclude = ["install.subdir", "install.multi, install.private, change_url"]
