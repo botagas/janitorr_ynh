@@ -37,7 +37,7 @@ jobs:
     - name: Rename Native Executable for Release
       run: |
         cd janitorr/build/native/nativeCompile
-        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
           mv janitorr janitorr-testing
         else
           mv janitorr janitorr-master
@@ -45,7 +45,7 @@ jobs:
 
     - name: Set release binary name
       run: |
-        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
           echo "RELEASE_BIN_NAME=janitorr-testing" >> $GITHUB_ENV
         else
           echo "RELEASE_BIN_NAME=janitorr-master" >> $GITHUB_ENV
