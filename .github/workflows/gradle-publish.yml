@@ -70,6 +70,15 @@ jobs:
           echo "RELEASE_JAR_NAME=janitorr-master.jar" >> $GITHUB_ENV
         fi
 
+    - name: Set release tag name
+      run: |
+        REF_NAME="${GITHUB_REF##*/}"
+        if [[ "$REF_NAME" == *-latest ]]; then
+          echo "RELEASE_TAG_NAME=$REF_NAME" >> $GITHUB_ENV
+        else
+          echo "RELEASE_TAG_NAME=${REF_NAME}-latest" >> $GITHUB_ENV
+        fi
+
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
 #    - name: Publish to GitHub Packages
@@ -81,7 +90,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: janitorr/build/libs/${{ env.RELEASE_JAR_NAME }}
-        tag_name: ${{ github.ref_name }}
+        tag_name: ${{ env.RELEASE_TAG_NAME }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
