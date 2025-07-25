@@ -7,14 +7,22 @@
 
 name: Gradle Package
 
+
 on:
   release:
     types: [created]
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
-
+    if: |
+      github.event_name != 'release' ||
+      github.event.release.target_commitish == 'master' ||
+      github.event.release.target_commitish == 'testing'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -48,7 +56,7 @@ jobs:
     - name: Rename JAR for Release
       run: |
         cd janitorr/build/libs
-        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
           [ -f janitorr-testing.jar ] || mv janitorr-*.jar janitorr-testing.jar
         else
           [ -f janitorr-master.jar ] || mv janitorr-*.jar janitorr-master.jar
@@ -56,10 +64,19 @@ jobs:
 
     - name: Set release jar name
       run: |
-        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
           echo "RELEASE_JAR_NAME=janitorr-testing.jar" >> $GITHUB_ENV
         else
           echo "RELEASE_JAR_NAME=janitorr-master.jar" >> $GITHUB_ENV
+        fi
+
+    - name: Set release tag name
+      run: |
+        REF_NAME="${GITHUB_REF##*/}"
+        if [[ "$REF_NAME" == *-latest ]]; then
+          echo "RELEASE_TAG_NAME=$REF_NAME" >> $GITHUB_ENV
+        else
+          echo "RELEASE_TAG_NAME=${REF_NAME}-latest" >> $GITHUB_ENV
         fi
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
@@ -73,7 +90,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: janitorr/build/libs/${{ env.RELEASE_JAR_NAME }}
-        tag_name: ${{ github.ref_name }}
+        tag_name: ${{ env.RELEASE_TAG_NAME }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
