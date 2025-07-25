@@ -13,15 +13,15 @@ jobs:
       packages: write
 
     steps:
-    - name: Checkout this repository
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
     - name: Set up JDK 23
       uses: actions/setup-java@v4
       with:
         java-version: '23'
         distribution: 'temurin'
         cache: 'gradle'
+        server-id: github
+        settings-path: ${{ github.workspace }}
 
     - name: Clone Janitorr Repository
       run: |
@@ -39,6 +39,8 @@ jobs:
     - name: Upload Native Binary to GitHub Releases
       uses: softprops/action-gh-release@v1
       with:
-        files: janitorr/build/native/nativeCompile/**
+        files: janitorr/build/native/nativeCompile/native-**
+        tag_name: latest
       env:
+        USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
