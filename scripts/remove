@@ -20,10 +20,7 @@ ynh_config_remove_systemd
 ynh_config_remove_nginx
 
 ynh_print_info "Removing app specific cron and etc data if present..."
-ynh_safe_rm "/etc/cron.d/$app"
-ynh_safe_rm "/etc/$app"
 
-# Remove the app-specific logrotate config
 ynh_config_remove_logrotate
 
 #=================================================
