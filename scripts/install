@@ -104,15 +104,15 @@ application:
   media-deletion:
     enabled: true
     movie-expiration:
-      5: $leaving_soon
-      10: $leaving_soon
-      15: $leaving_soon
-      20: 120d 
+      5: $expiration_date
+      10: $expiration_date
+      15: $expiration_date
+      20: $expiration_date
     season-expiration:
-      5: $leaving_soon
-      10: $leaving_soon
-      15: $leaving_soon 
-      20: 120d 
+      5: $expiration_date
+      10: $expiration_date
+      15: $expiration_date
+      20: $expiration_date
 
   tag-based-deletion:
     enabled: false
@@ -178,11 +178,10 @@ clients:
     url: "$jellystat_url"
     api-key: "$jellystat_api_key"
   streamystats:
-    enabled: false
-    whole-tv-show: true
-    url: "http://streamystats:3000"
-    username: Janitorr
-    password: janitorr
+    enabled: $streamystats_usage
+    url: "$streamystats_url"
+    username: "$streamystats_username"
+    password: "$streamystats_password"
 EOL
 
 #=================================================
