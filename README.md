@@ -4,7 +4,7 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="/doc/screenshots/janitorr-logo.png" width="32px" alt="Logo of Janitorr">
+  <img src="/doc/screenshots/janitorr-logo.jpg" width="32px" alt="Logo of Janitorr">
   Janitorr, packaged for YunoHost
 </h1>
 
