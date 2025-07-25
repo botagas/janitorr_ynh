@@ -7,6 +7,10 @@ on:
 
 jobs:
   build-native:
+    if: |
+      github.event_name != 'release' ||
+      github.event.release.target_commitish == 'master-native' ||
+      github.event.release.target_commitish == 'testing-native'
     runs-on: ubuntu-latest
     permissions:
       contents: write
