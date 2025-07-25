@@ -14,8 +14,6 @@ media_server_leaving_soon_dir="/home/yunohost.multimedia/share/leavingsoon"
 #=================================================
 # FETCH INFO AND SET PLACEHOLDERS
 #=================================================
-ynh_print_info "Setting up variables..."
-
 # Find service API keys and ports
 detect_and_read_radarr_and_sonarr_settings() {
 if ls /etc/yunohost/apps | grep -q "radarr"; then
