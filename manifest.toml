@@ -177,7 +177,7 @@ ram.runtime = "100M"
     ask.en = "Which branch do you want to use?"
     help.en = "native builds are aimed towards amd64 architectures"
     type = "select"
-    choices = ["master", "master-native"]
+    choices = ["master", "master-native", "testing", "testing-native"]
     default = "true"
 
 [resources]
