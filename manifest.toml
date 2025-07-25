@@ -5,7 +5,7 @@ packaging_format = 2
 id = "janitorr"
 name = "Janitorr"
 description.en = "A cleanup tool for managing media files by integrating with services like Jellyseerr, Jellyfin, Radarr, and Sonarr."
-version = "1.7.0~ynh3"
+version = "1.7.2~ynh3"
 maintainers = ["botagas"]
 
 [upstream]
@@ -15,7 +15,7 @@ code = "https://github.com/Schaka/janitorr"
 [integration]
 yunohost = ">= 11.2"
 helpers_version = "2.1"
-architectures = "all"
+architectures = "amd64"
 multi_instance = false
 ldap = false
 sso = false
@@ -185,7 +185,6 @@ ram.runtime = "100M"
     [resources.sources.main]
     url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.7.2.tar.gz"
     sha256 = "7c0621e840840845b8d9de505a18e7fe46ca0421aab21a2b2e936cc2d7b78d77"
-    branch = "main"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.sources.jdk]
