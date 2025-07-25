@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
   workflow_dispatch:
+  pull_request:
+    branches:
+      - master-native
+    types: [opened, synchronize, reopened]
 
 jobs:
   build-native:
@@ -37,7 +41,7 @@ jobs:
     - name: Rename Native Executable for Release
       run: |
         cd janitorr/build/native/nativeCompile
-        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
           mv janitorr janitorr-testing
         else
           mv janitorr janitorr-master
@@ -45,17 +49,26 @@ jobs:
 
     - name: Set release binary name
       run: |
-        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
           echo "RELEASE_BIN_NAME=janitorr-testing" >> $GITHUB_ENV
         else
           echo "RELEASE_BIN_NAME=janitorr-master" >> $GITHUB_ENV
+        fi
+
+    - name: Set release tag name
+      run: |
+        REF_NAME="${GITHUB_REF##*/}"
+        if [[ "$REF_NAME" == *-latest ]]; then
+          echo "RELEASE_TAG_NAME=$REF_NAME" >> $GITHUB_ENV
+        else
+          echo "RELEASE_TAG_NAME=${REF_NAME}-latest" >> $GITHUB_ENV
         fi
 
     - name: Upload Native Binary to GitHub Releases
       uses: softprops/action-gh-release@v1
       with:
         files: janitorr/build/native/nativeCompile/${{ env.RELEASE_BIN_NAME }}
-        tag_name: ${{ github.ref_name }}
+        tag_name: ${{ env.RELEASE_TAG_NAME }}
       env:
         USERNAME: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
