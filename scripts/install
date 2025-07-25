@@ -66,7 +66,18 @@ mkdir -p "/home/yunohost.multimedia/share/leavingsoon"
 ynh_print_info "Generating application.yml..."
 cat > "$install_dir/application.yml" <<EOL
 server:
-  port: $port
+  port: $port_main_app
+
+management:
+  server:
+    port: $port_main_management
+  endpoints:
+    web:
+      base-path: "/"
+  endpoint:
+    health:
+      probes:
+        enabled: true
 
 logging:
   level:
@@ -180,11 +191,35 @@ EOL
 ynh_script_progression "Setting up the app executable and system configs..."
 
 ynh_print_info "Downloading Janitorr JAR..."
-ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/latest/janitorr-master.jar"
+if [[ "$branch_select" == "master" || "$branch_select" == "testing" ]]; then
+  # Download JAR
+  if [[ "$branch_select" == "testing" ]]; then
+    jar_name="janitorr-testing.jar"
+    tag_name="testing-latest"
+  else
+    jar_name="janitorr-master.jar"
+    tag_name="master-latest"
+  fi
+  ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$jar_name"
+elif [[ "$branch_select" == "master-native" || "$branch_select" == "testing-native" ]]; then
+  # Download native binary
+  if [[ "$branch_select" == "testing-native" ]]; then
+    bin_name="janitorr-testing"
+    tag_name="testing-native-latest"
+  else
+    bin_name="janitorr-master"
+    tag_name="master-native-latest"
+  fi
+  ynh_hide_warnings wget -O "$install_dir/janitorr" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$bin_name"
+  chmod +x "$install_dir/janitorr"
+else
+  ynh_print_info "FALLBACK: Downloading default Janitorr JAR..."
+  ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/master/janitorr-master.jar"
+fi
 chown -R "$app:$app" "$install_dir"
 
 ynh_print_info "Adding systemd service..."
-yunohost service add "$app" --description="Janitorr cleanup service" --log="/var/log/$app/janitorr.log"
+yunohost service add "$app" --description="Janitorr cleanup service" --log="/var/log/$app/$app.log"
 ynh_config_add_systemd
 
 # Use logrotate to manage application logfile(s)

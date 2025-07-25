@@ -173,11 +173,18 @@ ram.runtime = "100M"
     type = "string"
     default = "janitorr_keep"
 
+    [install.branch_select]
+    ask.en = "Which branch do you want to use?"
+    help.en = "native builds are aimed towards amd64 architectures"
+    type = "select"
+    choices = ["master", "master-native", "testing", "testing-native"]
+    default = "true"
+
 [resources]
     [resources.sources]
     [resources.sources.main]
-    url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.6.9.tar.gz"
-    sha256 = "cf83301278efc5196c54e60767edae49f03c52cbe742f8335a521e0d4ed7a4f8"
+    url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.7.2.tar.gz"
+    sha256 = "7c0621e840840845b8d9de505a18e7fe46ca0421aab21a2b2e936cc2d7b78d77"
     branch = "main"
     autoupdate.strategy = "latest_github_tag"
 
