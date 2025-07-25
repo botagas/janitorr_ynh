@@ -211,7 +211,7 @@ elif [[ "$branch_select" == "master-native" || "$branch_select" == "testing-nati
     tag_name="master-native-latest"
   fi
   ynh_hide_warnings wget -O "$install_dir/janitorr" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$bin_name"
-  chmod +x "$install_dir/janitorr"
+  chmod 750 "$install_dir/janitorr"
 else
   ynh_print_info "FALLBACK: Downloading default Janitorr JAR..."
   ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/master/janitorr-master.jar"
