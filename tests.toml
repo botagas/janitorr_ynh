@@ -28,12 +28,16 @@ test_format = 1.0
     args.whole_tv_show = "false"
     args.whole_show_seeding_check = "false"
     args.leaving_soon = "14d"
+    args.expiration_date = "120d"
     args.exclusion_tag = "janitorr_keep"
     args.jellyfin_usage = "false"
     args.jellystat_usage = "false"
     args.jellyseerr_usage = "false"
     args.radarr_usage = "false"
     args.sonarr_usage = "false"
+    args.streamystats_usage = "false"
+    args.streamystats_username = "test"
+    args.streamystats_password = "test"
     args.branch_select = "testing"
 
     exclude = ["install.subdir", "install.multi, install.private, change_url"]
