@@ -5,7 +5,7 @@ packaging_format = 2
 id = "janitorr"
 name = "Janitorr"
 description.en = "A cleanup tool for managing media files by integrating with services like Jellyseerr, Jellyfin, Radarr, and Sonarr."
-version = "1.7.2~ynh3"
+version = "v1.7.2~ynh1"
 maintainers = ["botagas"]
 
 [upstream]
@@ -46,6 +46,14 @@ ram.runtime = "100M"
 
     [install.jellystat_usage]
     ask.en = "Do you use Jellystat?"
+    help.en = "This disables communication with the mentioned service in Janitorr."
+    type = "select"
+    choices.true = "true"
+    choices.false = "false"
+    default = "false"
+
+    [install.streamystats_usage]
+    ask.en = "Do you use Streamystats?"
     help.en = "This disables communication with the mentioned service in Janitorr."
     type = "select"
     choices.true = "true"
