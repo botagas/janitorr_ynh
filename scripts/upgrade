@@ -31,27 +31,27 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 
 ynh_print_info "Downloading Janitorr JAR..."
-if [[ "$branch" == "master" || "$branch" == "testing" ]]; then
+if [[ "$branch_select" == "master" || "$branch_select" == "testing" ]]; then
   # Download JAR
-  if [[ "$branch" == "testing" ]]; then
+  if [[ "$branch_select" == "testing" ]]; then
     jar_name="janitorr-testing.jar"
-    tag_name="testing"
+    tag_name="testing-latest"
   else
     jar_name="janitorr-master.jar"
-    tag_name="master"
+    tag_name="master-latest"
   fi
   ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$jar_name"
-elif [[ "$branch" == "master-native" || "$branch" == "testing-native" ]]; then
+elif [[ "$branch_select" == "master-native" || "$branch_select" == "testing-native" ]]; then
   # Download native binary
-  if [[ "$branch" == "testing-native" ]]; then
+  if [[ "$branch_select" == "testing-native" ]]; then
     bin_name="janitorr-testing"
-    tag_name="testing-native"
+    tag_name="testing-native-latest"
   else
     bin_name="janitorr-master"
-    tag_name="master-native"
+    tag_name="master-native-latest"
   fi
   ynh_hide_warnings wget -O "$install_dir/janitorr" "https://github.com/botagas/janitorr_ynh/releases/download/$tag_name/$bin_name"
-  chmod +x "$install_dir/janitorr"
+  chmod 750 "$install_dir/janitorr"
 else
   ynh_print_info "FALLBACK: Downloading default Janitorr JAR..."
   ynh_hide_warnings wget -O "$install_dir/janitorr.jar" "https://github.com/botagas/janitorr_ynh/releases/download/master/janitorr-master.jar"
@@ -64,7 +64,7 @@ ynh_script_progression "Configuring nginx and systemd related to $app..."
 
 ynh_config_add_systemd
 
-yunohost service add "$app" --description="Janitorr cleanup service"
+yunohost service add "$app" --description="Janitorr cleanup service" --log="/var/log/$app/$app.log"
 
 # Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
