@@ -31,7 +31,7 @@ The `testing` branch can be tested using:
 sudo yunohost app install https://github.com/YunoHost-Apps/janitorr_ynh/tree/testing
 
 # upgrade an existing install:
-sudo yunohost app upgrade wgdashboard -u https://github.com/YunoHost-Apps/janitorr_ynh/tree/testing
+sudo yunohost app upgrade janitorr -u https://github.com/YunoHost-Apps/janitorr_ynh/tree/testing
 ```
 
 ### 📚 App packaging documentation
