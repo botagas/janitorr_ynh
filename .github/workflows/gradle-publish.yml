@@ -48,7 +48,7 @@ jobs:
     - name: Rename JAR for Release
       run: |
         cd janitorr/build/libs
-        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
           [ -f janitorr-testing.jar ] || mv janitorr-*.jar janitorr-testing.jar
         else
           [ -f janitorr-master.jar ] || mv janitorr-*.jar janitorr-master.jar
@@ -56,7 +56,7 @@ jobs:
 
     - name: Set release jar name
       run: |
-        if [[ "${GITHUB_REF##*/}" == "testing" || "${GITHUB_REF##*/}" == "testing-native" ]]; then
+        if [[ "${GITHUB_REF##*/}" == "testing-latest" || "${GITHUB_REF##*/}" == "testing-native-latest" ]]; then
           echo "RELEASE_JAR_NAME=janitorr-testing.jar" >> $GITHUB_ENV
         else
           echo "RELEASE_JAR_NAME=janitorr-master.jar" >> $GITHUB_ENV
