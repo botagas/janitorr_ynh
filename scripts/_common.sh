@@ -77,4 +77,14 @@ else
         jellyseerr_api_key="${jellyseerr_api_key:-PLACEHOLDER}"
         jellyfin_api_key="${jellyfin_api_key:-PLACEHOLDER}"
 fi
+if ls /etc/yunohost/apps | grep -q "streamystats"; then
+        streamystats_port=$(ynh_app_setting_get --app streamystats --key port)
+        streamystats_url="http://127.0.0.1:$streamystats_port"
+        streamystats_api_key=$(ynh_app_setting_get --app streamystats --key api_key)
+else
+        ynh_print_warn "Couldn't find StreamyStats port and api_key, setting placeholder values..."
+        streamystats_port="${streamystats_port:-PLACEHOLDER}"
+        streamystats_url="${streamystats_url:-http://PLACE.HOLDER}"
+        streamystats_api_key="${streamystats_api_key:-PLACEHOLDER}"
+fi
 }
