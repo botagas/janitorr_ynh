@@ -39,7 +39,7 @@ jobs:
     - name: Upload Native Binary to GitHub Releases
       uses: softprops/action-gh-release@v1
       with:
-        files: janitorr/build/native/nativeCompile/native-**
+        files: janitorr/build/native/nativeCompile/**
         tag_name: latest
       env:
         USERNAME: ${{ github.actor }}
