@@ -44,6 +44,7 @@ ynh_app_setting_set --app=$app --key=jellyseerr_url --value="$jellyseerr_url"
 ynh_app_setting_set --app=$app --key=jellyseerr_api_key --value="$jellyseerr_api_key"
 ynh_app_setting_set --app=$app --key=jellystat_url --value="$jellystat_url"
 ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_key"
+ynh_app_setting_set --app=$app --key=branch_select --value="$branch_select"
 
 #=================================================
 # ACCESS AND CONFIG
