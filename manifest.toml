@@ -110,6 +110,12 @@ ram.runtime = "100M"
     type = "string"
     default = ""
     optional = true
+
+    [install.streamystats_url]
+    ask.en = "Enter the URL for Streamystats."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Streamystats is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
     
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
@@ -117,6 +123,11 @@ ram.runtime = "100M"
     type = "string"
     default = ""
     optional = true
+
+    [install.streamystats_api_key]
+    ask.en = "Enter the API_KEY for Streamystats."
+    type = "string"
+    default = ""
 
     [install.jellyfin_username]
     ask.en = "Enter the username for the Jellyfin user."
@@ -126,17 +137,6 @@ ram.runtime = "100M"
 
     [install.jellyfin_password]
     ask.en = "Enter the password for the Jellyfin user."
-    type = "string"
-    default = ""
-
-    [install.streamystats_username]
-    ask.en = "Enter the username for the Streamystats user."
-    help.en = "Janitorr requires a separate user for monitoring media."
-    type = "string"
-    default = ""
-
-    [install.streamystats_password]
-    ask.en = "Enter the password for the Streamystats user."
     type = "string"
     default = ""
 
