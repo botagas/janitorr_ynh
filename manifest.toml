@@ -209,7 +209,7 @@ ram.runtime = "100M"
     [resources.sources]
     [resources.sources.main]
     url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.9.0.tar.gz"
-    sha256 = "8f9e5fc0be338b6ba436aaf2b10b8d447ab3eb5bedaf652d047d51ad0be938e5"
+    sha256 = "12911caa0d8aabe0862f3426c54c342de897c960f4ed800cc2b257ec4c4df2fa"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.sources.jdk]
