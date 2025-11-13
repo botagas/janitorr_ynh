@@ -44,6 +44,10 @@ ynh_app_setting_set --app=$app --key=jellyseerr_url --value="$jellyseerr_url"
 ynh_app_setting_set --app=$app --key=jellyseerr_api_key --value="$jellyseerr_api_key"
 ynh_app_setting_set --app=$app --key=jellystat_url --value="$jellystat_url"
 ynh_app_setting_set --app=$app --key=jellystat_api_key --value="$jellystat_api_key"
+ynh_app_setting_set --app=$app --key=branch_select --value="$branch_select"
+ynh_app_setting_set --app=$app --key=streamystats_usage --value="$streamystats_usage"
+ynh_app_setting_set --app=$app --key=streamystats_url --value="$streamystats_url"
+ynh_app_setting_set --app=$app --key=streamystats_api_key --value="$streamystats_api_key"
 
 #=================================================
 # ACCESS AND CONFIG
@@ -99,7 +103,8 @@ application:
   whole-tv-show: $whole_tv_show
   whole-show-seeding-check: $whole_show_seeding_check
   leaving-soon: $leaving_soon
-  exclusion-tag: "$exclusion_tag"
+  exclusion-tags: 
+    - "$exclusion_tag"
 
   media-deletion:
     enabled: true
@@ -157,12 +162,14 @@ clients:
     url: "$radarr_url"
     api-key: "$radarr_api_key"
     only-delete-files: false
+    import-exclusions: false
   sonarr:
     enabled: $sonarr_usage
     url: "$sonarr_url"
     api-key: "$sonarr_api_key"
     delete-empty-shows: true
     determine-age-by: most_recent
+    import-exclusions: false
   bazarr:
     enabled: false # Only used if you want to copy over subtitle files managed by Bazarr
     url: "http://localhost:6767"
@@ -179,9 +186,9 @@ clients:
     api-key: "$jellystat_api_key"
   streamystats:
     enabled: $streamystats_usage
+    whole-tv-show: false
     url: "$streamystats_url"
-    username: "$streamystats_username"
-    password: "$streamystats_password"
+    api-key: "$streamystats_api_key"
 EOL
 
 #=================================================

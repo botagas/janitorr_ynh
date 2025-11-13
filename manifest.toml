@@ -5,7 +5,7 @@ packaging_format = 2
 id = "janitorr"
 name = "Janitorr"
 description.en = "A cleanup tool for managing media files by integrating with services like Jellyseerr, Jellyfin, Radarr, and Sonarr."
-version = "v1.7.2~ynh1"
+version = "v1.9.0~ynh1"
 maintainers = ["botagas"]
 
 [upstream]
@@ -110,6 +110,12 @@ ram.runtime = "100M"
     type = "string"
     default = ""
     optional = true
+
+    [install.streamystats_url]
+    ask.en = "Enter the URL for Streamystats."
+    help.en = "This setting is fetched AUTOMATICALLY during install if Streamystats is installed on YunoHost (leave as is). You can replace it if you are hosting this service on a different machine.\nSYNTAX: http://example:port"
+    type = "string"
+    default = ""
     
     [install.jellyfin_api_key]
     ask.en = "Enter the API key for your Jellyfin server."
@@ -117,6 +123,11 @@ ram.runtime = "100M"
     type = "string"
     default = ""
     optional = true
+
+    [install.streamystats_api_key]
+    ask.en = "Enter the API_KEY for Streamystats."
+    type = "string"
+    default = ""
 
     [install.jellyfin_username]
     ask.en = "Enter the username for the Jellyfin user."
@@ -126,17 +137,6 @@ ram.runtime = "100M"
 
     [install.jellyfin_password]
     ask.en = "Enter the password for the Jellyfin user."
-    type = "string"
-    default = ""
-
-    [install.streamystats_username]
-    ask.en = "Enter the username for the Streamystats user."
-    help.en = "Janitorr requires a separate user for monitoring media."
-    type = "string"
-    default = ""
-
-    [install.streamystats_password]
-    ask.en = "Enter the password for the Streamystats user."
     type = "string"
     default = ""
 
@@ -208,16 +208,16 @@ ram.runtime = "100M"
 [resources]
     [resources.sources]
     [resources.sources.main]
-    url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.7.2.tar.gz"
-    sha256 = "7c0621e840840845b8d9de505a18e7fe46ca0421aab21a2b2e936cc2d7b78d77"
+    url = "https://github.com/Schaka/janitorr/archive/refs/tags/v1.9.0.tar.gz"
+    sha256 = "12911caa0d8aabe0862f3426c54c342de897c960f4ed800cc2b257ec4c4df2fa"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.sources.jdk]
-    amd64.url = "https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23.0.2%2B7/OpenJDK23U-jdk_x64_linux_hotspot_23.0.2_7.tar.gz"
-    amd64.sha256 = "870ac8c05c6fe563e7a3878a47d0234b83c050e83651d2c47e8b822ec74512dd"
+    amd64.url = "https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24.0.2%2B12/OpenJDK24U-jdk_x64_linux_hotspot_24.0.2_12.tar.gz"
+    amd64.sha256 = "aea1cc55e51cf651c85f2f00ad021603fe269c4bb6493fa97a321ad770c9b096"
     autoupdate.strategy = "latest_github_release"
     autoupdate.version_regex = "jdk-(\\d+\\.\\d+\\.\\d+)\\+(.*)"
-    autoupdate.upstream = "https://github.com/adoptium/temurin23-binaries"
+    autoupdate.upstream = "https://github.com/adoptium/temurin24-binaries"
     autoupdate.asset.amd64 = "OpenJDK.*-jdk_x64_linux_hotspot_.*\\.tar\\.gz$"
     
     [resources.system_user]
