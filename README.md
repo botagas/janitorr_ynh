@@ -21,7 +21,7 @@ This is an application that is meant to be used as a clean-up tool for your Jell
 
 [![Automatic tests level](https://yunorunner.tiesiog.lt/api/badge/janitorr/integration)](https://ci-apps.yunohost.org/ci/apps/janitorr/)
 
-🛠️ Upstream WGDashboard repository: <https://github.com/Schaka/janitorr>
+🛠️ Upstream Janitorr repository: <https://github.com/Schaka/janitorr>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/janitorr_ynh/tree/testing).
 
