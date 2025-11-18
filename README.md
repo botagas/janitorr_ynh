@@ -10,7 +10,7 @@ It shall NOT be edited by hand.
 
 This is an application that is meant to be used as a clean-up tool for your Jellyfin media library.
 
-[![Version: 1.7.2~ynh1](https://img.shields.io/badge/Version-v1.7.2~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/wgdashboard/)
+[![Version: 1.9.0~ynh1](https://img.shields.io/badge/Version-v1.9.0~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/wgdashboard/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/janitorr"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
@@ -21,7 +21,7 @@ This is an application that is meant to be used as a clean-up tool for your Jell
 
 [![Automatic tests level](https://yunorunner.tiesiog.lt/api/badge/janitorr/integration)](https://ci-apps.yunohost.org/ci/apps/janitorr/)
 
-🛠️ Upstream WGDashboard repository: <https://github.com/Schaka/janitorr>
+🛠️ Upstream Janitorr repository: <https://github.com/Schaka/janitorr>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/janitorr_ynh/tree/testing).
 
